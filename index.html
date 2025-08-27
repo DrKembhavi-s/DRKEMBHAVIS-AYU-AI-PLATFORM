@@ -1227,12 +1227,19 @@
             }
         }
 
-        // For testing - add admin controls (visible only in development)
-        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.hostname.includes('github.io')) {
-            // Add reset button for testing
+        // For testing - add admin controls (ONLY for specific development sites)
+        const isDevelopment = (
+            window.location.hostname === 'localhost' || 
+            window.location.hostname === '127.0.0.1' || 
+            // ONLY show on your specific GitHub Pages URL
+            window.location.hostname === 'drkembhavi-s.github.io'
+        );
+        
+        if (isDevelopment) {
+            // Add reset button for testing - ONLY visible to you as the owner
             setTimeout(() => {
                 const resetBtn = document.createElement('button');
-                resetBtn.innerHTML = '🔄 Reset (Dev)';
+                resetBtn.innerHTML = '🔄 Reset (Admin)';
                 resetBtn.style.cssText = `
                     position: fixed; 
                     bottom: 20px; 
@@ -1246,9 +1253,16 @@
                     font-size: 0.8rem;
                     z-index: 1000;
                     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                    opacity: 0.8;
                 `;
                 resetBtn.onclick = clearAllData;
-                resetBtn.title = 'Reset user state to test registration flow';
+                resetBtn.title = 'Admin: Reset user state to test registration flow';
+                
+                // Hide button after 30 seconds for cleaner demo
+                setTimeout(() => {
+                    resetBtn.style.display = 'none';
+                }, 30000);
+                
                 document.body.appendChild(resetBtn);
             }, 2000);
 
@@ -1258,7 +1272,7 @@
                     const verificationSection = document.getElementById('verificationSection');
                     if (!verificationSection.classList.contains('hidden')) {
                         const testButton = document.createElement('button');
-                        testButton.textContent = '🧪 Test: Verify Email (Dev Only)';
+                        testButton.textContent = '🧪 Test: Verify Email (Admin Only)';
                         testButton.style.cssText = `
                             background: #10B981; 
                             color: white; 
