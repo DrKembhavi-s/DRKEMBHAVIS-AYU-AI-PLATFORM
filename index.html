@@ -867,9 +867,9 @@
             }, 3000);
         }
 
-        // GitHub Configuration
+        // GitHub Configuration - CONFIGURED FOR DrKembhavi-s
         const GITHUB_CONFIG = {
-            username: 'yourusername', // Replace with your GitHub username
+            username: 'DrKembhavi-s', // Your actual GitHub username
             // Optional: Use GitHub token for private repos (store securely)
             token: null, // 'ghp_xxxxxxxxxx' - only if accessing private repos
             // Filter repositories by topic or name pattern
@@ -1032,24 +1032,93 @@
                 .join(' ');
         }
 
-        // Fallback static tools if GitHub API fails
+        // Fallback static tools - YOUR ACTUAL REPOSITORIES
         function getFallbackTools() {
             return [
                 {
-                    id: 'herb-identifier',
-                    title: 'Ayurvedic Herb Identifier', 
-                    description: 'AI-powered herb identification and property analysis with detailed Ayurvedic classifications.',
-                    category: 'academic',
-                    url: 'https://github.com/yourusername/ayurveda-herb-identifier'
+                    id: 'research-scholar-assessment',
+                    title: 'Research Scholar Assessment Tool', 
+                    description: 'Comprehensive assessment system for Ayurveda research scholars to evaluate their research methodology, progress, and academic performance.',
+                    category: 'research',
+                    url: 'https://drkembhavi-s.github.io/research-scholar-assessment/',
+                    repoUrl: 'https://github.com/DrKembhavi-s/research-scholar-assessment',
+                    topics: ['ayurveda-ai', 'research', 'assessment'],
+                    lastUpdated: new Date().toISOString(),
+                    isPrivate: true,
+                    isLive: true,
+                    stars: 0,
+                    language: 'JavaScript'
                 },
                 {
-                    id: 'dosha-analyzer',
-                    title: 'Dosha Constitution Analyzer',
-                    description: 'Advanced AI system for precise Prakriti and Vikriti analysis based on comprehensive patient data.',
-                    category: 'clinical',
-                    url: 'https://github.com/yourusername/dosha-constitution-analyzer'
+                    id: 'ayu-teacher-self-assessment',
+                    title: 'Ayurveda Teacher Self-Assessment Tool',
+                    description: 'Professional development and evaluation system for Ayurveda educators to assess their teaching effectiveness and pedagogical skills.',
+                    category: 'education',
+                    url: 'https://drkembhavi-s.github.io/AYU-TEACHER-SELF-ASSESSMENT-TOOL/',
+                    repoUrl: 'https://github.com/DrKembhavi-s/AYU-TEACHER-SELF-ASSESSMENT-TOOL',
+                    topics: ['ayurveda-ai', 'education', 'assessment'],
+                    lastUpdated: new Date().toISOString(),
+                    isPrivate: true,
+                    isLive: true,
+                    stars: 0,
+                    language: 'JavaScript'
                 },
-                // Add more fallback tools as needed
+                {
+                    id: 'ayu-ai-tools-portfolio',
+                    title: 'Dr Kembhavi\'s Ayurveda AI Tools Portfolio',
+                    description: 'Comprehensive showcase of AI-powered tools and applications developed for Ayurvedic practice, research, and education.',
+                    category: 'academic',
+                    url: 'https://drkembhavi-s.github.io/drkembhavis-ayu-ai-tools-portfolio/',
+                    repoUrl: 'https://github.com/DrKembhavi-s/drkembhavis-ayu-ai-tools-portfolio',
+                    topics: ['ayurveda-ai', 'portfolio', 'academic'],
+                    lastUpdated: new Date().toISOString(),
+                    isPrivate: true,
+                    isLive: true,
+                    stars: 0,
+                    language: 'JavaScript'
+                },
+                {
+                    id: 'dosha-constitution-analyzer',
+                    title: 'Dosha Constitution Analyzer',
+                    description: 'Advanced AI system for precise Prakriti and Vikriti analysis based on comprehensive patient assessment and classical Ayurvedic principles.',
+                    category: 'clinical',
+                    url: `https://github.com/DrKembhavi-s/dosha-constitution-analyzer`,
+                    repoUrl: `https://github.com/DrKembhavi-s/dosha-constitution-analyzer`,
+                    topics: ['ayurveda-ai', 'clinical'],
+                    lastUpdated: new Date().toISOString(),
+                    isPrivate: true,
+                    isLive: false,
+                    stars: 0,
+                    language: 'Python'
+                },
+                {
+                    id: 'ayurveda-herb-identifier',
+                    title: 'Ayurvedic Herb Identifier',
+                    description: 'AI-powered medicinal plant identification system with detailed Ayurvedic properties, usage guidelines, and therapeutic applications.',
+                    category: 'academic',
+                    url: `https://github.com/DrKembhavi-s/ayurveda-herb-identifier`,
+                    repoUrl: `https://github.com/DrKembhavi-s/ayurveda-herb-identifier`,
+                    topics: ['ayurveda-ai', 'academic'],
+                    lastUpdated: new Date().toISOString(),
+                    isPrivate: true,
+                    isLive: false,
+                    stars: 0,
+                    language: 'Python'
+                },
+                {
+                    id: 'pulse-diagnosis-ai',
+                    title: 'Nadi Pariksha AI Assistant',
+                    description: 'Digital pulse diagnosis support system with pattern recognition, analysis capabilities, and integration with classical Ayurvedic pulse texts.',
+                    category: 'clinical',
+                    url: `https://github.com/DrKembhavi-s/pulse-diagnosis-ai`,
+                    repoUrl: `https://github.com/DrKembhavi-s/pulse-diagnosis-ai`,
+                    topics: ['ayurveda-ai', 'clinical'],
+                    lastUpdated: new Date().toISOString(),
+                    isPrivate: true,
+                    isLive: false,
+                    stars: 0,
+                    language: 'Python'
+                }
             ];
         }
 
@@ -1095,10 +1164,13 @@
                         <div class="tool-icon ${categoryConfig.gradient}">${categoryConfig.icon}</div>
                         <h4 class="tool-title">${tool.title}</h4>
                         <p class="tool-description">${tool.description}</p>
-                        <div style="margin-top: 1rem; display: flex; justify-content: space-between; align-items: center;">
+                        <div style="margin-top: 1rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
                             <span class="tool-category">${tool.category}</span>
-                            ${tool.isPrivate ? '<span style="color: var(--orange); font-size: 0.8rem;">🔒 Private</span>' : ''}
-                            ${tool.stars > 0 ? `<span style="color: var(--gray); font-size: 0.8rem;">⭐ ${tool.stars}</span>` : ''}
+                            <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.8rem;">
+                                ${tool.isLive ? '<span style="color: var(--success);">🟢 Live Tool</span>' : '<span style="color: var(--orange);">🔗 Repository</span>'}
+                                ${tool.isPrivate ? '<span style="color: var(--orange);">🔒 Private</span>' : ''}
+                                ${tool.stars > 0 ? `<span style="color: var(--gray);">⭐ ${tool.stars}</span>` : ''}
+                            </div>
                         </div>
                     `;
                     
