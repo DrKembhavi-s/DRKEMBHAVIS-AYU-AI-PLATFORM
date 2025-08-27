@@ -1135,19 +1135,26 @@
             toolsGrid.appendChild(loadingIndicator);
 
             try {
-                const tools = await fetchGitHubRepositories();
+                // For private repositories, we'll use fallback tools directly
+                // You can uncomment the line below if you want to try GitHub API first
+                // const tools = await fetchGitHubRepositories();
+                
+                // Use fallback tools (your actual repositories)
+                const tools = getFallbackTools();
                 
                 // Clear loading indicator
-                toolsGrid.removeChild(loadingIndicator);
+                if (loadingIndicator.parentNode) {
+                    toolsGrid.removeChild(loadingIndicator);
+                }
                 
-                // Clear existing static tools
+                // Clear existing content
                 toolsGrid.innerHTML = '';
                 
                 if (tools.length === 0) {
                     toolsGrid.innerHTML = `
-                        <div style="text-align: center; padding: 3rem; color: var(--gray);">
+                        <div style="text-align: center; padding: 3rem; color: var(--gray); grid-column: 1/-1;">
                             <div style="font-size: 2rem; margin-bottom: 1rem;">🛠️</div>
-                            <div>No tools found. Make sure your repositories have the topic 'ayurveda-ai' or match the naming pattern.</div>
+                            <div>No tools configured yet. Please contact the administrator.</div>
                         </div>
                     `;
                     return;
@@ -1177,16 +1184,22 @@
                     toolsGrid.appendChild(toolCard);
                 });
 
-                console.log(`Loaded ${tools.length} tools from GitHub`);
+                console.log(`✅ Loaded ${tools.length} tools successfully!`);
+                
             } catch (error) {
-                toolsGrid.removeChild(loadingIndicator);
+                // Clear loading indicator on error
+                if (loadingIndicator.parentNode) {
+                    toolsGrid.removeChild(loadingIndicator);
+                }
+                
                 toolsGrid.innerHTML = `
-                    <div style="text-align: center; padding: 3rem; color: var(--error);">
+                    <div style="text-align: center; padding: 3rem; color: var(--error); grid-column: 1/-1;">
                         <div style="font-size: 2rem; margin-bottom: 1rem;">⚠️</div>
                         <div>Error loading tools. Please refresh the page.</div>
+                        <button onclick="generateToolsGrid()" style="margin-top: 1rem; padding: 0.5rem 1rem; background: var(--primary); color: white; border: none; border-radius: 6px; cursor: pointer;">Retry</button>
                     </div>
                 `;
-                console.error('Error generating tools grid:', error);
+                console.error('❌ Error generating tools grid:', error);
             }
         }
 
