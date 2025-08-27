@@ -658,8 +658,25 @@
             }
         });
 
-        // Registration form handling
-        document.getElementById('registrationForm').addEventListener('submit', function(e) {
+        // Formspree Configuration - CONFIGURED FOR YOUR FORM
+        const FORMSPREE_CONFIG = {
+            formId: 'xdklorwl', // ← Your actual Form ID
+            endpoint: 'https://formspree.io/f/xdklorwl' // ← Your actual endpoint
+        };
+
+        // Generate verification link
+        function generateVerificationLink(email) {
+            const baseUrl = window.location.origin + window.location.pathname;
+            const verificationParams = new URLSearchParams({
+                verified: 'true',
+                email: email,
+                timestamp: Date.now()
+            });
+            return `${baseUrl}?${verificationParams.toString()}`;
+        }
+
+        // Registration form handling with Formspree integration
+        document.getElementById('registrationForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
             const form = this;
@@ -672,38 +689,90 @@
             btnText.textContent = 'Processing...';
             submitBtn.disabled = true;
             
-            // Get form data
-            const formData = new FormData(form);
-            const userData = Object.fromEntries(formData);
-            
-            // Simulate registration process
-            setTimeout(() => {
-                // Save user data
-                userState.isRegistered = true;
-                userState.isVerified = false;
-                userState.email = userData.email;
-                userState.userData = userData;
+            try {
+                // Get form data
+                const formData = new FormData(form);
+                const userData = Object.fromEntries(formData);
                 
-                // Save to localStorage
-                localStorage.setItem('ayurvedaAI_userState', JSON.stringify(userState));
+                // Add verification link to form data
+                const verificationLink = generateVerificationLink(userData.email);
+                formData.append('verification_link', verificationLink);
+                formData.append('platform_name', 'Dr Kembhavi\'s Ayurveda AI Tools');
                 
-                // Show success message
-                document.getElementById('registrationSuccess').classList.remove('hidden');
+                // Send to Formspree
+                const response = await fetch(FORMSPREE_CONFIG.endpoint, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
                 
-                // Show verification section after delay
+                if (response.ok) {
+                    // Registration successful
+                    userState.isRegistered = true;
+                    userState.isVerified = false;
+                    userState.email = userData.email;
+                    userState.userData = userData;
+                    
+                    // Save to localStorage
+                    localStorage.setItem('ayurvedaAI_userState', JSON.stringify(userState));
+                    
+                    // Clear saved form data
+                    clearSavedFormData();
+                    
+                    // Show success message
+                    document.getElementById('registrationSuccess').classList.remove('hidden');
+                    document.getElementById('registrationSuccess').innerHTML = `
+                        <strong>Registration Successful!</strong><br>
+                        📧 Verification email sent to <strong>${userData.email}</strong><br>
+                        Please check your inbox (including spam folder).
+                    `;
+                    
+                    // Show verification section after delay
+                    setTimeout(() => {
+                        showVerificationSection();
+                    }, 3000);
+                    
+                } else {
+                    // Handle Formspree errors
+                    const errorData = await response.json();
+                    throw new Error(errorData.error || 'Registration failed');
+                }
+                
+            } catch (error) {
+                console.error('Registration error:', error);
+                
+                // Show error message
+                const errorDiv = document.createElement('div');
+                errorDiv.style.cssText = `
+                    background: rgba(239, 68, 68, 0.1);
+                    border: 1px solid rgba(239, 68, 68, 0.3);
+                    color: var(--error);
+                    padding: 1rem;
+                    border-radius: 8px;
+                    margin-top: 1rem;
+                    text-align: center;
+                `;
+                errorDiv.innerHTML = `
+                    <strong>Registration Failed</strong><br>
+                    ${error.message || 'Please try again or contact support.'}
+                `;
+                form.appendChild(errorDiv);
+                
+                // Remove error message after 5 seconds
                 setTimeout(() => {
-                    showVerificationSection();
-                }, 2000);
+                    if (errorDiv.parentNode) {
+                        errorDiv.parentNode.removeChild(errorDiv);
+                    }
+                }, 5000);
                 
+            } finally {
                 // Reset form state
                 loading.style.display = 'none';
                 btnText.textContent = 'Register & Get Access';
                 submitBtn.disabled = false;
-                
-                console.log('Registration data:', userData);
-                // In real implementation, send this data to your backend/email service
-                
-            }, 2000);
+            }
         });
 
         // Update UI based on user state
@@ -747,23 +816,55 @@
             generateToolsGrid();
         }
 
-        // Resend verification email
-        function resendVerification() {
+        // Resend verification email with Formspree
+        async function resendVerification() {
             const btn = event.target;
             const originalText = btn.textContent;
             
             btn.textContent = 'Sending...';
             btn.disabled = true;
             
-            setTimeout(() => {
-                btn.textContent = 'Email Sent!';
-                setTimeout(() => {
-                    btn.textContent = originalText;
-                    btn.disabled = false;
-                }, 2000);
-            }, 1500);
+            try {
+                if (!userState.email) {
+                    throw new Error('No email address found');
+                }
+                
+                // Prepare resend data
+                const formData = new FormData();
+                formData.append('email', userState.email);
+                formData.append('name', userState.userData?.fullName || 'User');
+                formData.append('resend', 'true');
+                formData.append('verification_link', generateVerificationLink(userState.email));
+                formData.append('platform_name', 'Dr Kembhavi\'s Ayurveda AI Tools');
+                
+                // Send to Formspree
+                const response = await fetch(FORMSPREE_CONFIG.endpoint, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    btn.textContent = '✅ Email Sent!';
+                    btn.style.background = 'var(--success)';
+                } else {
+                    throw new Error('Failed to resend email');
+                }
+                
+            } catch (error) {
+                console.error('Resend error:', error);
+                btn.textContent = '❌ Failed to send';
+                btn.style.background = 'var(--error)';
+            }
             
-            console.log('Resending verification email to:', userState.email);
+            // Reset button after 3 seconds
+            setTimeout(() => {
+                btn.textContent = originalText;
+                btn.style.background = 'var(--secondary)';
+                btn.disabled = false;
+            }, 3000);
         }
 
         // GitHub Configuration
