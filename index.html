@@ -3,197 +3,1142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Access My Developer Tools</title>
+    <title>Dr Kembhavi's Ayurveda AI Tools - Academic, Clinical, Research Platform</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
         
+        :root {
+            /* Colors from Astanga Wellness logo */
+            --primary: #6B46C1; /* Purple */
+            --primary-dark: #553C9A;
+            --secondary: #0891B2; /* Teal */
+            --accent: #059669; /* Green */
+            --orange: #EA580C; /* Orange */
+            --white: #ffffff;
+            --gray-light: #F8FAFC;
+            --gray: #64748B;
+            --gray-dark: #334155;
+            --success: #10B981;
+            --warning: #F59E0B;
+            --error: #EF4444;
+        }
+        
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--gray-light) 0%, #E2E8F0 100%);
+            color: var(--gray-dark);
+            line-height: 1.6;
             min-height: 100vh;
+        }
+        
+        /* Background pattern */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(107, 70, 193, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(8, 145, 178, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(5, 150, 105, 0.05) 0%, transparent 50%);
+            z-index: -1;
+        }
+        
+        /* Header */
+        .header {
+            background: var(--white);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .logo {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
+            color: var(--white);
+            font-weight: 700;
+            font-size: 1.5rem;
+            flex-shrink: 0;
         }
         
+        .header-text {
+            flex: 1;
+        }
+        
+        .header-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.25rem;
+        }
+        
+        .header-subtitle {
+            color: var(--gray);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        /* Main container */
         .container {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 40px;
-            max-width: 500px;
-            width: 90%;
-            text-align: center;
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-            border: 1px solid rgba(255, 255, 255, 0.18);
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
         }
         
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            background: linear-gradient(45deg, #fff, #f0f8ff);
+        /* Welcome section */
+        .welcome-section {
+            text-align: center;
+            margin-bottom: 4rem;
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(107, 70, 193, 0.1);
+        }
+        
+        .welcome-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
         
-        .subtitle {
+        .welcome-description {
             font-size: 1.1rem;
-            margin-bottom: 30px;
-            opacity: 0.9;
+            color: var(--gray);
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        
+        .specialties {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        
+        .specialty {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        /* Status indicator */
+        .status-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+        
+        .status-unregistered {
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--error);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+        
+        .status-pending {
+            background: rgba(245, 158, 11, 0.1);
+            color: var(--warning);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+        }
+        
+        .status-verified {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--success);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+        
+        /* Registration form */
+        .registration-section {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(107, 70, 193, 0.1);
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            color: var(--gray);
+            margin-bottom: 2rem;
         }
         
         .form-group {
-            margin-bottom: 20px;
-            text-align: left;
+            margin-bottom: 1.5rem;
         }
         
         label {
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 0.5rem;
             font-weight: 600;
+            color: var(--gray-dark);
         }
         
-        input[type="text"], input[type="email"], textarea {
+        input, select, textarea {
             width: 100%;
-            padding: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 8px;
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            font-size: 16px;
-            backdrop-filter: blur(5px);
+            padding: 1rem;
+            border: 2px solid #E2E8F0;
+            border-radius: 12px;
+            background: var(--white);
+            color: var(--gray-dark);
+            font-size: 1rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
         
-        input[type="text"]::placeholder, 
-        input[type="email"]::placeholder, 
-        textarea::placeholder {
-            color: rgba(255, 255, 255, 0.7);
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(107, 70, 193, 0.1);
+        }
+        
+        input::placeholder, textarea::placeholder {
+            color: var(--gray);
         }
         
         .submit-btn {
-            background: linear-gradient(45deg, #ff6b6b, #ff8e53);
-            color: white;
+            width: 100%;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
             border: none;
-            padding: 15px 30px;
-            border-radius: 25px;
-            font-size: 16px;
+            border-radius: 12px;
+            font-size: 1.1rem;
             font-weight: 600;
             cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
-            width: 100%;
+            transition: transform 0.2s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
         
         .submit-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(255, 107, 107, 0.3);
+            box-shadow: 0 10px 25px rgba(107, 70, 193, 0.3);
         }
         
-        .features {
-            margin-top: 30px;
-            text-align: left;
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
         }
         
-        .feature {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-            font-size: 0.9rem;
-            opacity: 0.9;
+        /* Verification section */
+        .verification-section {
+            text-align: center;
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(245, 158, 11, 0.3);
         }
         
-        .feature:before {
-            content: "✓";
-            background: linear-gradient(45deg, #4ecdc4, #44a08d);
-            color: white;
+        .verification-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--warning), var(--orange));
             border-radius: 50%;
-            width: 20px;
-            height: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-right: 10px;
-            font-size: 12px;
-            font-weight: bold;
+            font-size: 2rem;
+            margin: 0 auto 2rem;
         }
         
-        .success-message {
-            display: none;
-            background: rgba(76, 175, 80, 0.2);
-            border: 1px solid rgba(76, 175, 80, 0.5);
-            color: #4caf50;
-            padding: 15px;
+        .resend-btn {
+            background: var(--secondary);
+            color: var(--white);
+            border: none;
+            padding: 0.75rem 2rem;
             border-radius: 8px;
-            margin-top: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 1rem;
+        }
+        
+        .resend-btn:hover {
+            background: #0e7490;
+        }
+        
+        /* Tools dashboard */
+        .tools-section {
+            margin-top: 2rem;
+        }
+        
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .tool-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(107, 70, 193, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15);
+            border-color: var(--primary);
+        }
+        
+        .tool-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+        }
+        
+        .tool-academic { background: linear-gradient(135deg, var(--primary), var(--primary-dark)); }
+        .tool-clinical { background: linear-gradient(135deg, var(--secondary), #0e7490); }
+        .tool-research { background: linear-gradient(135deg, var(--accent), #047857); }
+        .tool-education { background: linear-gradient(135deg, var(--orange), #dc2626); }
+        
+        .tool-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: var(--gray-dark);
+        }
+        
+        .tool-description {
+            color: var(--gray);
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+        
+        .tool-category {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: rgba(107, 70, 193, 0.1);
+            color: var(--primary);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        /* Success messages */
+        .success-message {
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: var(--success);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            text-align: center;
+        }
+        
+        /* Loading spinner */
+        .loading {
+            display: none;
+            width: 20px;
+            height: 20px;
+            border: 2px solid transparent;
+            border-top: 2px solid var(--white);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-right: 0.5rem;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Hidden sections */
+        .hidden {
+            display: none;
+        }
+        
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .header-content {
+                padding: 0 1rem;
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .header-title {
+                font-size: 1.25rem;
+            }
+            
+            .container {
+                padding: 2rem 1rem;
+            }
+            
+            .welcome-section, .registration-section, .verification-section {
+                padding: 2rem;
+                margin: 0 0 2rem 0;
+            }
+            
+            .specialties {
+                gap: 1rem;
+            }
+            
+            .specialty {
+                font-size: 0.8rem;
+                padding: 0.4rem 1rem;
+            }
+            
+            .tools-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+        }
+        
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.6s ease forwards;
+        }
+        
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">🌿</div>
+            <div class="header-text">
+                <h1 class="header-title">Dr Kembhavi's Ayurveda AI Tools</h1>
+                <p class="header-subtitle">A platform for everything AI in Ayurveda - Academic, Clinical, Research, UG & PG</p>
+            </div>
+        </div>
+    </header>
+
     <div class="container">
-        <h1>Developer Tools</h1>
-        <p class="subtitle">Get exclusive access to my curated development tools</p>
-        
-        <form id="accessForm">
-            <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name" placeholder="Your full name" required>
+        <!-- Welcome Section -->
+        <section class="welcome-section fade-in">
+            <h2 class="welcome-title">Welcome to Advanced Ayurveda AI Platform</h2>
+            <p class="welcome-description">
+                Access cutting-edge AI tools designed specifically for Ayurvedic practitioners, researchers, and students. 
+                Our comprehensive platform combines traditional Ayurvedic wisdom with modern artificial intelligence 
+                to enhance learning, clinical practice, and research outcomes.
+            </p>
+            <div class="specialties">
+                <span class="specialty">Academic</span>
+                <span class="specialty">Clinical</span>
+                <span class="specialty">Research</span>
+                <span class="specialty">UG & PG</span>
             </div>
             
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="your@email.com" required>
+            <!-- Status Indicator -->
+            <div id="statusIndicator" class="status-indicator status-unregistered">
+                <span>🔒</span>
+                <span>Registration Required</span>
             </div>
+        </section>
+
+        <!-- Registration Form -->
+        <section id="registrationSection" class="registration-section fade-in">
+            <h3 class="section-title">Join the Platform</h3>
+            <p class="section-subtitle">Create your account to access premium Ayurveda AI tools</p>
             
-            <div class="form-group">
-                <label for="github">GitHub Username</label>
-                <input type="text" id="github" name="github" placeholder="yourusername" required>
+            <form id="registrationForm">
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" name="fullName" placeholder="Dr. Your Full Name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="institution">Institution/Organization</label>
+                    <input type="text" id="institution" name="institution" placeholder="Medical College, Hospital, or Private Practice" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="category">Professional Category</label>
+                    <select id="category" name="category" required>
+                        <option value="">Select your category</option>
+                        <option value="student-ug">Undergraduate Student (BAMS)</option>
+                        <option value="student-pg">Postgraduate Student (MD/MS)</option>
+                        <option value="practitioner">Ayurvedic Practitioner</option>
+                        <option value="researcher">Researcher/Academic</option>
+                        <option value="faculty">Faculty/Professor</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="purpose">Intended Use</label>
+                    <textarea id="purpose" name="purpose" placeholder="How do you plan to use these AI tools? (e.g., clinical diagnosis, research, education, etc.)" rows="3" required></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">
+                    <div class="loading"></div>
+                    <span class="btn-text">Register & Get Access</span>
+                </button>
+            </form>
+            
+            <div id="registrationSuccess" class="success-message hidden">
+                <strong>Registration Successful!</strong> Please check your email for verification instructions.
             </div>
-            
-            <div class="form-group">
-                <label for="purpose">How will you use these tools?</label>
-                <textarea id="purpose" name="purpose" placeholder="Brief description of your project or use case" rows="3" required></textarea>
+        </section>
+
+        <!-- Email Verification Section -->
+        <section id="verificationSection" class="verification-section hidden fade-in">
+            <div class="verification-icon">📧</div>
+            <h3 class="section-title">Verify Your Email</h3>
+            <p class="section-subtitle">
+                We've sent a verification link to your email address. Please click the link to verify your account 
+                and gain access to all AI tools.
+            </p>
+            <p style="color: var(--gray); margin-top: 1rem;">
+                Check your inbox (including spam folder) for an email from Dr Kembhavi's Ayurveda AI Platform.
+            </p>
+            <button class="resend-btn" onclick="resendVerification()">Resend Verification Email</button>
+        </section>
+
+        <!-- Tools Dashboard -->
+        <section id="toolsSection" class="tools-section hidden fade-in">
+            <div class="section-title" style="text-align: center; margin-bottom: 1rem;">
+                🎉 Welcome to Your AI Tools Dashboard
             </div>
+            <p style="text-align: center; color: var(--gray); margin-bottom: 3rem;">
+                Access your premium Ayurveda AI tools. Click on any tool to launch it.
+            </p>
             
-            <button type="submit" class="submit-btn">Request Access</button>
-        </form>
-        
-        <div class="success-message" id="successMessage">
-            <strong>Request Submitted!</strong> You'll receive access instructions via email within 24 hours.
-        </div>
-        
-        <div class="features">
-            <div class="feature">Curated development tools and scripts</div>
-            <div class="feature">Regular updates and new additions</div>
-            <div class="feature">Direct GitHub repository access</div>
-            <div class="feature">Community support and discussions</div>
-        </div>
+            <div class="tools-grid">
+                <!-- Academic Tools -->
+                <div class="tool-card" onclick="openTool('herb-identifier')">
+                    <div class="tool-icon tool-academic">🌿</div>
+                    <h4 class="tool-title">Ayurvedic Herb Identifier</h4>
+                    <p class="tool-description">AI-powered herb identification and property analysis with detailed Ayurvedic classifications.</p>
+                    <span class="tool-category">Academic</span>
+                </div>
+                
+                <div class="tool-card" onclick="openTool('dosha-analyzer')">
+                    <div class="tool-icon tool-clinical">⚖️</div>
+                    <h4 class="tool-title">Dosha Constitution Analyzer</h4>
+                    <p class="tool-description">Advanced AI system for precise Prakriti and Vikriti analysis based on comprehensive patient data.</p>
+                    <span class="tool-category">Clinical</span>
+                </div>
+                
+                <div class="tool-card" onclick="openTool('treatment-recommender')">
+                    <div class="tool-icon tool-clinical">💊</div>
+                    <h4 class="tool-title">Treatment Protocol Recommender</h4>
+                    <p class="tool-description">Evidence-based treatment recommendations combining classical texts with modern AI analysis.</p>
+                    <span class="tool-category">Clinical</span>
+                </div>
+                
+                <div class="tool-card" onclick="openTool('research-analyzer')">
+                    <div class="tool-icon tool-research">📊</div>
+                    <h4 class="tool-title">Ayurveda Research Analyzer</h4>
+                    <p class="tool-description">Comprehensive analysis tool for Ayurvedic research papers, clinical trials, and meta-analyses.</p>
+                    <span class="tool-category">Research</span>
+                </div>
+                
+                <div class="tool-card" onclick="openTool('text-translator')">
+                    <div class="tool-icon tool-academic">📜</div>
+                    <h4 class="tool-title">Sanskrit Text Translator</h4>
+                    <p class="tool-description">AI-powered translation of classical Ayurvedic texts with contextual interpretations.</p>
+                    <span class="tool-category">Academic</span>
+                </div>
+                
+                <div class="tool-card" onclick="openTool('quiz-generator')">
+                    <div class="tool-icon tool-education">🎓</div>
+                    <h4 class="tool-title">Ayurveda Quiz Generator</h4>
+                    <p class="tool-description">Adaptive learning system generating personalized quizzes for UG and PG Ayurveda students.</p>
+                    <span class="tool-category">Education</span>
+                </div>
+                
+                <div class="tool-card" onclick="openTool('drug-interaction')">
+                    <div class="tool-icon tool-clinical">⚠️</div>
+                    <h4 class="tool-title">Drug Interaction Checker</h4>
+                    <p class="tool-description">Advanced system to check interactions between Ayurvedic medicines and modern pharmaceuticals.</p>
+                    <span class="tool-category">Clinical</span>
+                </div>
+                
+                <div class="tool-card" onclick="openTool('pulse-analyzer')">
+                    <div class="tool-icon tool-clinical">💓</div>
+                    <h4 class="tool-title">Nadi Pariksha AI Assistant</h4>
+                    <p class="tool-description">Digital pulse diagnosis support system with pattern recognition and analysis capabilities.</p>
+                    <span class="tool-category">Clinical</span>
+                </div>
+            </div>
+        </section>
     </div>
 
     <script>
-        document.getElementById('accessForm').addEventListener('submit', function(e) {
+        // Application state
+        let userState = {
+            isRegistered: false,
+            isVerified: false,
+            email: null,
+            userData: null
+        };
+
+        // Check URL parameters for verification
+        window.addEventListener('load', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const verified = urlParams.get('verified');
+            const email = urlParams.get('email');
+            
+            if (verified === 'true' && email) {
+                userState.isRegistered = true;
+                userState.isVerified = true;
+                userState.email = email;
+                showToolsDashboard();
+            } else {
+                // Check localStorage for user state
+                const savedState = localStorage.getItem('ayurvedaAI_userState');
+                if (savedState) {
+                    userState = JSON.parse(savedState);
+                    updateUI();
+                }
+            }
+        });
+
+        // Registration form handling
+        document.getElementById('registrationForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
+            const form = this;
+            const submitBtn = form.querySelector('.submit-btn');
+            const loading = form.querySelector('.loading');
+            const btnText = form.querySelector('.btn-text');
+            
+            // Show loading state
+            loading.style.display = 'inline-block';
+            btnText.textContent = 'Processing...';
+            submitBtn.disabled = true;
+            
             // Get form data
-            const formData = new FormData(this);
-            const data = Object.fromEntries(formData);
+            const formData = new FormData(form);
+            const userData = Object.fromEntries(formData);
             
-            // Store in memory (you'll need to implement actual storage/email handling)
-            console.log('Access request:', data);
-            
-            // Show success message
-            document.getElementById('successMessage').style.display = 'block';
-            this.style.display = 'none';
-            
-            // In a real implementation, you would:
-            // 1. Send this data to your email or a service like Formspree
-            // 2. Add the GitHub username as a collaborator to your private repos
-            // 3. Send access instructions via email
+            // Simulate registration process
+            setTimeout(() => {
+                // Save user data
+                userState.isRegistered = true;
+                userState.isVerified = false;
+                userState.email = userData.email;
+                userState.userData = userData;
+                
+                // Save to localStorage
+                localStorage.setItem('ayurvedaAI_userState', JSON.stringify(userState));
+                
+                // Show success message
+                document.getElementById('registrationSuccess').classList.remove('hidden');
+                
+                // Show verification section after delay
+                setTimeout(() => {
+                    showVerificationSection();
+                }, 2000);
+                
+                // Reset form state
+                loading.style.display = 'none';
+                btnText.textContent = 'Register & Get Access';
+                submitBtn.disabled = false;
+                
+                console.log('Registration data:', userData);
+                // In real implementation, send this data to your backend/email service
+                
+            }, 2000);
         });
+
+        // Update UI based on user state
+        function updateUI() {
+            if (!userState.isRegistered) {
+                showRegistrationSection();
+            } else if (!userState.isVerified) {
+                showVerificationSection();
+            } else {
+                showToolsDashboard();
+            }
+        }
+
+        function showRegistrationSection() {
+            document.getElementById('registrationSection').classList.remove('hidden');
+            document.getElementById('verificationSection').classList.add('hidden');
+            document.getElementById('toolsSection').classList.add('hidden');
+            
+            document.getElementById('statusIndicator').className = 'status-indicator status-unregistered';
+            document.getElementById('statusIndicator').innerHTML = '<span>🔒</span><span>Registration Required</span>';
+        }
+
+        function showVerificationSection() {
+            document.getElementById('registrationSection').classList.add('hidden');
+            document.getElementById('verificationSection').classList.remove('hidden');
+            document.getElementById('toolsSection').classList.add('hidden');
+            
+            document.getElementById('statusIndicator').className = 'status-indicator status-pending';
+            document.getElementById('statusIndicator').innerHTML = '<span>⏳</span><span>Email Verification Pending</span>';
+        }
+
+        function showToolsDashboard() {
+            document.getElementById('registrationSection').classList.add('hidden');
+            document.getElementById('verificationSection').classList.add('hidden');
+            document.getElementById('toolsSection').classList.remove('hidden');
+            
+            document.getElementById('statusIndicator').className = 'status-indicator status-verified';
+            document.getElementById('statusIndicator').innerHTML = '<span>✅</span><span>Access Granted - Welcome!</span>';
+            
+            // Generate tools grid dynamically
+            generateToolsGrid();
+        }
+
+        // Resend verification email
+        function resendVerification() {
+            const btn = event.target;
+            const originalText = btn.textContent;
+            
+            btn.textContent = 'Sending...';
+            btn.disabled = true;
+            
+            setTimeout(() => {
+                btn.textContent = 'Email Sent!';
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.disabled = false;
+                }, 2000);
+            }, 1500);
+            
+            console.log('Resending verification email to:', userState.email);
+        }
+
+        // GitHub Configuration
+        const GITHUB_CONFIG = {
+            username: 'yourusername', // Replace with your GitHub username
+            // Optional: Use GitHub token for private repos (store securely)
+            token: null, // 'ghp_xxxxxxxxxx' - only if accessing private repos
+            // Filter repositories by topic or name pattern
+            filter: {
+                topics: ['ayurveda-ai', 'ayurveda-tool'], // Repositories with these topics
+                namePattern: /ayurveda|dosha|herb|pulse|nadi|assessment|tool/i, // Regex pattern for repo names (case-insensitive)
+                excludeForked: true // Exclude forked repositories
+            }
+        };
+
+        // Tool category mapping based on repository topics or names
+        const TOOL_CATEGORIES = {
+            'academic': {
+                icon: '🌿',
+                gradient: 'tool-academic',
+                keywords: ['academic', 'text', 'translator', 'herb', 'study', 'assessment', 'tool'],
+                topics: ['academic', 'education', 'learning']
+            },
+            'clinical': {
+                icon: '⚖️',
+                gradient: 'tool-clinical', 
+                keywords: ['clinical', 'dosha', 'treatment', 'diagnosis', 'pulse', 'nadi', 'assessment', 'tool'],
+                topics: ['clinical', 'diagnosis', 'treatment']
+            },
+            'research': {
+                icon: '📊',
+                gradient: 'tool-research',
+                keywords: ['research', 'analysis', 'data', 'study', 'assessment', 'tool'],
+                topics: ['research', 'analysis', 'data-science']
+            },
+            'education': {
+                icon: '🎓',
+                gradient: 'tool-education',
+                keywords: ['quiz', 'learn', 'student', 'education', 'teaching', 'assessment', 'tool'],
+                topics: ['education', 'quiz', 'learning', 'teaching']
+            }
+        };
+
+        // Fetch repositories from GitHub API
+        async function fetchGitHubRepositories() {
+            try {
+                const headers = {};
+                if (GITHUB_CONFIG.token) {
+                    headers['Authorization'] = `token ${GITHUB_CONFIG.token}`;
+                }
+
+                const response = await fetch(`https://api.github.com/users/${GITHUB_CONFIG.username}/repos?per_page=100&sort=updated`, {
+                    headers: headers
+                });
+
+                if (!response.ok) {
+                    throw new Error(`GitHub API error: ${response.status}`);
+                }
+
+                const repositories = await response.json();
+                return filterAndProcessRepos(repositories);
+            } catch (error) {
+                console.error('Error fetching repositories:', error);
+                return getFallbackTools(); // Return static tools if API fails
+            }
+        }
+
+        // Filter and process repositories
+        function filterAndProcessRepos(repositories) {
+            return repositories
+                .filter(repo => {
+                    // Skip forked repos if configured
+                    if (GITHUB_CONFIG.filter.excludeForked && repo.fork) return false;
+                    
+                    // Check if repo has required topics
+                    const hasRequiredTopic = GITHUB_CONFIG.filter.topics.some(topic => 
+                        repo.topics && repo.topics.includes(topic)
+                    );
+                    
+                    // Check if repo name matches pattern
+                    const nameMatches = GITHUB_CONFIG.filter.namePattern.test(repo.name);
+                    
+                    return hasRequiredTopic || nameMatches;
+                })
+                .map(repo => {
+                    const category = determineToolCategory(repo);
+                    return {
+                        id: repo.name.toLowerCase().replace(/[^a-z0-9]/g, '-'),
+                        title: formatToolTitle(repo.name),
+                        description: repo.description || `AI tool for Ayurvedic ${category.toLowerCase()} applications`,
+                        category: category,
+                        url: repo.html_url,
+                        topics: repo.topics || [],
+                        lastUpdated: repo.updated_at,
+                        isPrivate: repo.private,
+                        stars: repo.stargazers_count,
+                        language: repo.language
+                    };
+                })
+                .sort((a, b) => new Date(b.lastUpdated) - new Date(a.lastUpdated)); // Sort by most recent
+        }
+
+        // Determine tool category based on repo metadata
+        function determineToolCategory(repo) {
+            const repoText = `${repo.name} ${repo.description || ''} ${(repo.topics || []).join(' ')}`.toLowerCase();
+            
+            for (const [category, config] of Object.entries(TOOL_CATEGORIES)) {
+                // Check topics first
+                if (repo.topics && config.topics.some(topic => repo.topics.includes(topic))) {
+                    return category;
+                }
+                
+                // Check keywords
+                if (config.keywords.some(keyword => repoText.includes(keyword))) {
+                    return category;
+                }
+            }
+            
+            return 'academic'; // Default category
+        }
+
+        // Format repository name to readable title (converts to proper case)
+        function formatToolTitle(repoName) {
+            return repoName
+                .replace(/[-_]/g, ' ')
+                .split(' ')
+                .map(word => {
+                    // Handle special cases for uppercase acronyms
+                    const upperCaseWords = ['AI', 'API', 'UI', 'UX', 'ML', 'NLP', 'CV', 'OCR'];
+                    const upperWord = word.toUpperCase();
+                    
+                    if (upperCaseWords.includes(upperWord)) {
+                        return upperWord;
+                    }
+                    
+                    // Handle specific Ayurvedic terms that should be capitalized properly
+                    const ayurvedicTerms = {
+                        'ayurveda': 'Ayurveda',
+                        'ayurvedic': 'Ayurvedic', 
+                        'dosha': 'Dosha',
+                        'prakriti': 'Prakriti',
+                        'vikriti': 'Vikriti',
+                        'vata': 'Vata',
+                        'pitta': 'Pitta', 
+                        'kapha': 'Kapha',
+                        'nadi': 'Nadi',
+                        'pariksha': 'Pariksha',
+                        'sanskrit': 'Sanskrit',
+                        'shloka': 'Shloka',
+                        'mantra': 'Mantra',
+                        'chakra': 'Chakra',
+                        'marma': 'Marma',
+                        'panchakosha': 'Panchakosha',
+                        'tridosha': 'Tridosha'
+                    };
+                    
+                    const lowerWord = word.toLowerCase();
+                    if (ayurvedicTerms[lowerWord]) {
+                        return ayurvedicTerms[lowerWord];
+                    }
+                    
+                    // Standard title case for other words
+                    return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+                })
+                .join(' ');
+        }
+
+        // Fallback static tools if GitHub API fails
+        function getFallbackTools() {
+            return [
+                {
+                    id: 'herb-identifier',
+                    title: 'Ayurvedic Herb Identifier', 
+                    description: 'AI-powered herb identification and property analysis with detailed Ayurvedic classifications.',
+                    category: 'academic',
+                    url: 'https://github.com/yourusername/ayurveda-herb-identifier'
+                },
+                {
+                    id: 'dosha-analyzer',
+                    title: 'Dosha Constitution Analyzer',
+                    description: 'Advanced AI system for precise Prakriti and Vikriti analysis based on comprehensive patient data.',
+                    category: 'clinical',
+                    url: 'https://github.com/yourusername/dosha-constitution-analyzer'
+                },
+                // Add more fallback tools as needed
+            ];
+        }
+
+        // Generate tools grid dynamically
+        async function generateToolsGrid() {
+            const toolsGrid = document.querySelector('.tools-grid');
+            const loadingIndicator = document.createElement('div');
+            loadingIndicator.innerHTML = `
+                <div style="text-align: center; padding: 3rem; color: var(--gray);">
+                    <div class="loading" style="display: inline-block; width: 40px; height: 40px; margin-bottom: 1rem;"></div>
+                    <div>Loading your AI tools...</div>
+                </div>
+            `;
+            toolsGrid.appendChild(loadingIndicator);
+
+            try {
+                const tools = await fetchGitHubRepositories();
+                
+                // Clear loading indicator
+                toolsGrid.removeChild(loadingIndicator);
+                
+                // Clear existing static tools
+                toolsGrid.innerHTML = '';
+                
+                if (tools.length === 0) {
+                    toolsGrid.innerHTML = `
+                        <div style="text-align: center; padding: 3rem; color: var(--gray);">
+                            <div style="font-size: 2rem; margin-bottom: 1rem;">🛠️</div>
+                            <div>No tools found. Make sure your repositories have the topic 'ayurveda-ai' or match the naming pattern.</div>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                // Generate tool cards
+                tools.forEach(tool => {
+                    const categoryConfig = TOOL_CATEGORIES[tool.category];
+                    const toolCard = document.createElement('div');
+                    toolCard.className = 'tool-card';
+                    toolCard.onclick = () => openTool(tool);
+                    
+                    toolCard.innerHTML = `
+                        <div class="tool-icon ${categoryConfig.gradient}">${categoryConfig.icon}</div>
+                        <h4 class="tool-title">${tool.title}</h4>
+                        <p class="tool-description">${tool.description}</p>
+                        <div style="margin-top: 1rem; display: flex; justify-content: space-between; align-items: center;">
+                            <span class="tool-category">${tool.category}</span>
+                            ${tool.isPrivate ? '<span style="color: var(--orange); font-size: 0.8rem;">🔒 Private</span>' : ''}
+                            ${tool.stars > 0 ? `<span style="color: var(--gray); font-size: 0.8rem;">⭐ ${tool.stars}</span>` : ''}
+                        </div>
+                    `;
+                    
+                    toolsGrid.appendChild(toolCard);
+                });
+
+                console.log(`Loaded ${tools.length} tools from GitHub`);
+            } catch (error) {
+                toolsGrid.removeChild(loadingIndicator);
+                toolsGrid.innerHTML = `
+                    <div style="text-align: center; padding: 3rem; color: var(--error);">
+                        <div style="font-size: 2rem; margin-bottom: 1rem;">⚠️</div>
+                        <div>Error loading tools. Please refresh the page.</div>
+                    </div>
+                `;
+                console.error('Error generating tools grid:', error);
+            }
+        }
+
+        // Open tool function (updated for dynamic tools)
+        function openTool(tool) {
+            if (!userState.isVerified) {
+                alert('Please verify your email first to access the tools.');
+                return;
+            }
+            
+            if (typeof tool === 'string') {
+                // Handle legacy static tool IDs
+                console.log(`Opening legacy tool: ${tool}`);
+                alert('This tool is being prepared. It will be available soon!');
+                return;
+            }
+            
+            // Handle dynamic tool objects
+            if (tool.isPrivate) {
+                // For private repos, you might want to add user as collaborator first
+                console.log(`Accessing private repository: ${tool.title}`);
+                // You can add logic here to check if user has been added as collaborator
+            }
+            
+            window.open(tool.url, '_blank');
+            console.log(`Opening tool: ${tool.title} at ${tool.url}`);
+            
+            // Optional: Track tool usage
+            trackToolUsage(tool);
+        }
+
+        // Track tool usage (optional analytics)
+        function trackToolUsage(tool) {
+            const usage = JSON.parse(localStorage.getItem('ayurvedaAI_toolUsage') || '{}');
+            usage[tool.id] = (usage[tool.id] || 0) + 1;
+            localStorage.setItem('ayurvedaAI_toolUsage', JSON.stringify(usage));
+        }
+
+        // Manual verification for testing (remove in production)
+        function verifyEmailManually() {
+            if (userState.isRegistered && !userState.isVerified) {
+                userState.isVerified = true;
+                localStorage.setItem('ayurvedaAI_userState', JSON.stringify(userState));
+                showToolsDashboard();
+            }
+        }
+
+        // For testing - add a temporary verify button (remove in production)
+        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.hostname.includes('github.io')) {
+            // Add a temporary verification button for testing
+            setTimeout(() => {
+                if (userState.isRegistered && !userState.isVerified) {
+                    const verificationSection = document.getElementById('verificationSection');
+                    if (!verificationSection.classList.contains('hidden')) {
+                        const testButton = document.createElement('button');
+                        testButton.textContent = '🧪 Test: Verify Email (Dev Only)';
+                        testButton.style.cssText = `
+                            background: #10B981; 
+                            color: white; 
+                            border: none; 
+                            padding: 0.5rem 1rem; 
+                            border-radius: 6px; 
+                            margin-top: 1rem; 
+                            cursor: pointer;
+                            font-size: 0.9rem;
+                        `;
+                        testButton.onclick = verifyEmailManually;
+                        verificationSection.appendChild(testButton);
+                    }
+                }
+            }, 1000);
+        }
+
+        // Simulate email verification link
+        // In production, this would be handled by your email service
+        // Example verification URL: https://yourdomain.com/?verified=true&email=user@example.com
+
+        // Animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationDelay = '0s';
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections for animations
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Auto-save form data as user types (optional UX enhancement)
+        const formInputs = document.querySelectorAll('#registrationForm input, #registrationForm select, #registrationForm textarea');
+        formInputs.forEach(input => {
+            input.addEventListener('input', () => {
+                const formData = new FormData(document.getElementById('registrationForm'));
+                const data = Object.fromEntries(formData);
+                localStorage.setItem('ayurvedaAI_formData', JSON.stringify(data));
+            });
+        });
+
+        // Restore form data on page load
+        window.addEventListener('load', () => {
+            const savedFormData = localStorage.getItem('ayurvedaAI_formData');
+            if (savedFormData && !userState.isRegistered) {
+                const data = JSON.parse(savedFormData);
+                Object.keys(data).forEach(key => {
+                    const input = document.getElementById(key);
+                    if (input && data[key]) {
+                        input.value = data[key];
+                    }
+                });
+            }
+        });
+
+        // Clear saved form data after successful registration
+        function clearSavedFormData() {
+            localStorage.removeItem('ayurvedaAI_formData');
+        }
     </script>
 </body>
 </html>
