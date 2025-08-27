@@ -637,23 +637,59 @@
             userData: null
         };
 
+        // Reset user state (for testing and new users)
+        function resetUserState() {
+            localStorage.removeItem('ayurvedaAI_userState');
+            localStorage.removeItem('ayurvedaAI_formData');
+            userState = {
+                isRegistered: false,
+                isVerified: false,
+                email: null,
+                userData: null
+            };
+            updateUI();
+            console.log('🔄 User state reset - showing registration form');
+        }
+
+        // Admin function to clear all data (only visible to developer)
+        function clearAllData() {
+            if (confirm('Are you sure you want to reset all user data? This will show the registration form.')) {
+                resetUserState();
+                alert('✅ All data cleared! Refresh to see registration form.');
+            }
+        }
+
         // Check URL parameters for verification
         window.addEventListener('load', function() {
             const urlParams = new URLSearchParams(window.location.search);
             const verified = urlParams.get('verified');
             const email = urlParams.get('email');
             
+            // Check for admin reset parameter
+            const reset = urlParams.get('reset');
+            if (reset === 'true') {
+                resetUserState();
+                // Clean URL
+                window.history.replaceState({}, document.title, window.location.pathname);
+                return;
+            }
+            
             if (verified === 'true' && email) {
                 userState.isRegistered = true;
                 userState.isVerified = true;
                 userState.email = email;
                 showToolsDashboard();
+                // Clean URL
+                window.history.replaceState({}, document.title, window.location.pathname);
             } else {
                 // Check localStorage for user state
                 const savedState = localStorage.getItem('ayurvedaAI_userState');
                 if (savedState) {
                     userState = JSON.parse(savedState);
                     updateUI();
+                } else {
+                    // New user - show registration
+                    showRegistrationSection();
                 }
             }
         });
@@ -1032,7 +1068,7 @@
                 .join(' ');
         }
 
-        // Fallback static tools - YOUR ACTUAL REPOSITORIES
+        // Fallback static tools - YOUR ACTUAL REPOSITORIES (UPDATED LIST)
         function getFallbackTools() {
             return [
                 {
@@ -1062,62 +1098,6 @@
                     isLive: true,
                     stars: 0,
                     language: 'JavaScript'
-                },
-                {
-                    id: 'ayu-ai-tools-portfolio',
-                    title: 'Dr Kembhavi\'s Ayurveda AI Tools Portfolio',
-                    description: 'Comprehensive showcase of AI-powered tools and applications developed for Ayurvedic practice, research, and education.',
-                    category: 'academic',
-                    url: 'https://drkembhavi-s.github.io/drkembhavis-ayu-ai-tools-portfolio/',
-                    repoUrl: 'https://github.com/DrKembhavi-s/drkembhavis-ayu-ai-tools-portfolio',
-                    topics: ['ayurveda-ai', 'portfolio', 'academic'],
-                    lastUpdated: new Date().toISOString(),
-                    isPrivate: true,
-                    isLive: true,
-                    stars: 0,
-                    language: 'JavaScript'
-                },
-                {
-                    id: 'dosha-constitution-analyzer',
-                    title: 'Dosha Constitution Analyzer',
-                    description: 'Advanced AI system for precise Prakriti and Vikriti analysis based on comprehensive patient assessment and classical Ayurvedic principles.',
-                    category: 'clinical',
-                    url: `https://github.com/DrKembhavi-s/dosha-constitution-analyzer`,
-                    repoUrl: `https://github.com/DrKembhavi-s/dosha-constitution-analyzer`,
-                    topics: ['ayurveda-ai', 'clinical'],
-                    lastUpdated: new Date().toISOString(),
-                    isPrivate: true,
-                    isLive: false,
-                    stars: 0,
-                    language: 'Python'
-                },
-                {
-                    id: 'ayurveda-herb-identifier',
-                    title: 'Ayurvedic Herb Identifier',
-                    description: 'AI-powered medicinal plant identification system with detailed Ayurvedic properties, usage guidelines, and therapeutic applications.',
-                    category: 'academic',
-                    url: `https://github.com/DrKembhavi-s/ayurveda-herb-identifier`,
-                    repoUrl: `https://github.com/DrKembhavi-s/ayurveda-herb-identifier`,
-                    topics: ['ayurveda-ai', 'academic'],
-                    lastUpdated: new Date().toISOString(),
-                    isPrivate: true,
-                    isLive: false,
-                    stars: 0,
-                    language: 'Python'
-                },
-                {
-                    id: 'pulse-diagnosis-ai',
-                    title: 'Nadi Pariksha AI Assistant',
-                    description: 'Digital pulse diagnosis support system with pattern recognition, analysis capabilities, and integration with classical Ayurvedic pulse texts.',
-                    category: 'clinical',
-                    url: `https://github.com/DrKembhavi-s/pulse-diagnosis-ai`,
-                    repoUrl: `https://github.com/DrKembhavi-s/pulse-diagnosis-ai`,
-                    topics: ['ayurveda-ai', 'clinical'],
-                    lastUpdated: new Date().toISOString(),
-                    isPrivate: true,
-                    isLive: false,
-                    stars: 0,
-                    language: 'Python'
                 }
             ];
         }
@@ -1247,8 +1227,31 @@
             }
         }
 
-        // For testing - add a temporary verify button (remove in production)
+        // For testing - add admin controls (visible only in development)
         if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.hostname.includes('github.io')) {
+            // Add reset button for testing
+            setTimeout(() => {
+                const resetBtn = document.createElement('button');
+                resetBtn.innerHTML = '🔄 Reset (Dev)';
+                resetBtn.style.cssText = `
+                    position: fixed; 
+                    bottom: 20px; 
+                    right: 20px; 
+                    background: #dc2626; 
+                    color: white; 
+                    border: none; 
+                    padding: 0.5rem 1rem; 
+                    border-radius: 6px; 
+                    cursor: pointer; 
+                    font-size: 0.8rem;
+                    z-index: 1000;
+                    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                `;
+                resetBtn.onclick = clearAllData;
+                resetBtn.title = 'Reset user state to test registration flow';
+                document.body.appendChild(resetBtn);
+            }, 2000);
+
             // Add a temporary verification button for testing
             setTimeout(() => {
                 if (userState.isRegistered && !userState.isVerified) {
