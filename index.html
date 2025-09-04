@@ -5,28 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dr Kembhavi's Ayurveda AI Platform</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
         
         :root {
-            /* Modern AI Platform Color Palette */
             --primary: #1a1a2e;
             --secondary: #16213e;
-            --accent: #0f3460;
-            --success: #00b894;
-            --warning: #fdcb6e;
-            --error: #e17055;
             --text-primary: #2d3436;
             --text-secondary: #636e72;
-            --text-light: #b2bec3;
             --white: #ffffff;
             --gray-50: #f8fafc;
             --gray-100: #f1f5f9;
             --gray-200: #e2e8f0;
-            --gray-300: #cbd5e1;
-            --gray-800: #1e293b;
-            --gray-900: #0f172a;
-            
-            /* AI Theme Colors */
             --ai-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             --ai-glow: rgba(102, 126, 234, 0.3);
             --neural-blue: #4299e1;
@@ -45,26 +34,8 @@
             background: var(--gray-50);
             color: var(--text-primary);
             line-height: 1.6;
-            overflow-x: hidden;
         }
 
-        /* Background Pattern */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 20% 20%, rgba(102, 126, 234, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(159, 122, 234, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 40% 60%, rgba(72, 187, 120, 0.05) 0%, transparent 50%);
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        /* Header */
         .header {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
@@ -72,7 +43,6 @@
             position: sticky;
             top: 0;
             z-index: 100;
-            transition: all 0.3s ease;
         }
 
         .header-content {
@@ -106,13 +76,11 @@
             font-size: 1.5rem;
             font-weight: 700;
             color: var(--primary);
-            margin-bottom: 0.2rem;
         }
 
         .brand-text p {
             font-size: 0.85rem;
             color: var(--text-secondary);
-            font-weight: 500;
         }
 
         .header-actions {
@@ -129,13 +97,10 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            background: rgba(203, 213, 225, 0.5);
+            color: var(--text-secondary);
         }
 
-        .status-free { background: rgba(72, 187, 120, 0.1); color: var(--cyber-green); }
-        .status-premium { background: rgba(159, 122, 234, 0.1); color: var(--quantum-purple); }
-        .status-guest { background: rgba(203, 213, 225, 0.5); color: var(--text-secondary); }
-
-        /* Hero Section */
         .hero {
             text-align: center;
             padding: 4rem 2rem;
@@ -202,12 +167,6 @@
             border: 2px solid var(--gray-200);
         }
 
-        .btn-secondary:hover {
-            border-color: var(--neural-blue);
-            color: var(--neural-blue);
-        }
-
-        /* User Categories */
         .categories {
             margin: 4rem 0;
         }
@@ -231,12 +190,44 @@
             margin: 0 auto;
         }
 
+        .free-tools-section {
+            max-width: 1400px;
+            margin: 0 auto 4rem auto;
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--gray-200);
+        }
+
+        .free-tools-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .free-tools-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--cyber-green);
+            margin-bottom: 0.5rem;
+        }
+
+        .free-tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
         .category-tabs {
             display: flex;
             justify-content: center;
             gap: 0.5rem;
             margin-bottom: 3rem;
             flex-wrap: wrap;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 3rem;
         }
 
         .category-tab {
@@ -256,12 +247,6 @@
             border-color: transparent;
         }
 
-        .category-tab:hover:not(.active) {
-            border-color: var(--neural-blue);
-            color: var(--neural-blue);
-        }
-
-        /* Tools Grid */
         .tools-container {
             max-width: 1400px;
             margin: 0 auto;
@@ -270,9 +255,8 @@
 
         .tools-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
-            margin-bottom: 3rem;
         }
 
         .tool-card {
@@ -282,20 +266,6 @@
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
             border: 1px solid var(--gray-200);
             transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .tool-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--ai-gradient);
-            opacity: 0;
-            transition: opacity 0.3s ease;
         }
 
         .tool-card:hover {
@@ -303,8 +273,8 @@
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
         }
 
-        .tool-card:hover::before {
-            opacity: 1;
+        .free-tool-card {
+            padding: 1.5rem;
         }
 
         .tool-header {
@@ -326,6 +296,13 @@
             flex-shrink: 0;
         }
 
+        .free-tool-icon {
+            width: 50px;
+            height: 50px;
+            font-size: 1.2rem;
+            background: var(--cyber-green);
+        }
+
         .tool-students { background: linear-gradient(135deg, var(--neural-blue), #3182ce); }
         .tool-faculty { background: linear-gradient(135deg, var(--quantum-purple), #805ad5); }
         .tool-scholars { background: linear-gradient(135deg, var(--cyber-green), #38a169); }
@@ -334,13 +311,23 @@
             font-size: 1.25rem;
             font-weight: 700;
             color: var(--primary);
-            margin-bottom: 0.5rem;
         }
 
-        .tool-description {
+        .free-tool-info h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .tool-description, .free-tool-description {
             color: var(--text-secondary);
             line-height: 1.6;
             margin-bottom: 1.5rem;
+        }
+
+        .free-tool-description {
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
         }
 
         .tool-footer {
@@ -366,7 +353,6 @@
             font-weight: 500;
         }
 
-        .tool-tag.free { background: rgba(72, 187, 120, 0.1); color: var(--cyber-green); }
         .tool-tag.premium { background: rgba(159, 122, 234, 0.1); color: var(--quantum-purple); }
 
         .tool-action {
@@ -383,6 +369,11 @@
             gap: 0.5rem;
         }
 
+        .free-tool-action {
+            padding: 0.4rem 1rem;
+            font-size: 0.85rem;
+        }
+
         .action-free {
             background: var(--cyber-green);
             color: white;
@@ -393,88 +384,6 @@
             color: white;
         }
 
-        .action-locked {
-            background: var(--gray-200);
-            color: var(--text-secondary);
-            cursor: not-allowed;
-        }
-
-        /* Auth Modal */
-        .modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(5px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .modal.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .modal-content {
-            background: white;
-            border-radius: 20px;
-            padding: 2.5rem;
-            width: 90%;
-            max-width: 500px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
-            transform: translateY(20px);
-            transition: transform 0.3s ease;
-        }
-
-        .modal.active .modal-content {
-            transform: translateY(0);
-        }
-
-        .modal-header {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-
-        .modal-header h2 {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            color: var(--text-primary);
-        }
-
-        .form-input, .form-select {
-            width: 100%;
-            padding: 0.75rem 1rem;
-            border: 2px solid var(--gray-200);
-            border-radius: 12px;
-            font-size: 1rem;
-            transition: border-color 0.3s ease;
-        }
-
-        .form-input:focus, .form-select:focus {
-            outline: none;
-            border-color: var(--neural-blue);
-        }
-
-        /* Pricing Section */
         .pricing {
             background: white;
             margin: 4rem 0;
@@ -490,7 +399,6 @@
             padding: 2.5rem;
             border: 2px solid var(--gray-200);
             position: relative;
-            overflow: hidden;
         }
 
         .pricing-card::before {
@@ -541,12 +449,94 @@
             flex-shrink: 0;
         }
 
-        /* Hidden sections */
         .hidden {
             display: none;
         }
 
-        /* Responsive Design */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .modal-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .modal-header h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .form-input, .form-select {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 2px solid var(--gray-200);
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-input:focus, .form-select:focus {
+            outline: none;
+            border-color: var(--neural-blue);
+        }
+
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid transparent;
+            border-top: 2px solid currentColor;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
         @media (max-width: 768px) {
             .header-content {
                 flex-direction: column;
@@ -569,85 +559,18 @@
                 justify-content: center;
             }
 
-            .tools-grid {
+            .tools-grid, .free-tools-grid {
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
             }
 
-            .tool-footer {
-                flex-direction: column;
-                align-items: flex-start;
+            .free-tools-section {
+                margin: 0 1rem 4rem 1rem;
             }
-
-            .modal-content {
-                margin: 1rem;
-                padding: 2rem;
-            }
-        }
-
-        /* Loading Animation */
-        .loading {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 2px solid transparent;
-            border-top: 2px solid currentColor;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* Success Animation */
-        .success-checkmark {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            display: block;
-            stroke-width: 2;
-            stroke: var(--cyber-green);
-            stroke-miterlimit: 10;
-            margin: 2rem auto;
-            box-shadow: inset 0px 0px 0px var(--cyber-green);
-            animation: fill 0.4s ease-in-out 0.4s forwards, scale 0.3s ease-in-out 0.9s both;
-        }
-
-        .success-checkmark__circle {
-            stroke-dasharray: 166;
-            stroke-dashoffset: 166;
-            stroke-width: 2;
-            stroke-miterlimit: 10;
-            stroke: var(--cyber-green);
-            fill: none;
-            animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
-        }
-
-        .success-checkmark__check {
-            transform-origin: 50% 50%;
-            stroke-dasharray: 48;
-            stroke-dashoffset: 48;
-            animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
-        }
-
-        @keyframes stroke {
-            100% { stroke-dashoffset: 0; }
-        }
-
-        @keyframes scale {
-            0%, 100% { transform: none; }
-            50% { transform: scale3d(1.1, 1.1, 1); }
-        }
-
-        @keyframes fill {
-            100% { box-shadow: inset 0px 0px 0px 30px var(--cyber-green); }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
     <header class="header">
         <div class="header-content">
             <div class="brand">
@@ -658,7 +581,7 @@
                 </div>
             </div>
             <div class="header-actions">
-                <div id="userStatus" class="status-badge status-guest">
+                <div id="userStatus" class="status-badge">
                     <span>👤</span>
                     <span>Guest User</span>
                 </div>
@@ -667,7 +590,6 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero">
         <h1>Revolutionary AI Tools for Ayurveda</h1>
         <p>Empowering students, faculty, and scholars with cutting-edge artificial intelligence designed specifically for Ayurvedic education, research, and practice.</p>
@@ -678,11 +600,84 @@
         </div>
     </section>
 
-    <!-- User Categories -->
     <section class="categories">
         <div class="section-header">
             <h2 class="section-title">Choose Your Path</h2>
             <p class="section-subtitle">Tailored AI tools designed for every stage of your Ayurvedic journey</p>
+        </div>
+
+        <div class="free-tools-section">
+            <div class="free-tools-header">
+                <h3 class="free-tools-title">🆓 Free Access Tools</h3>
+                <p style="color: var(--text-secondary);">Available to everyone - no registration required</p>
+            </div>
+            
+            <div class="free-tools-grid">
+                <div class="tool-card free-tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon free-tool-icon">🎯</div>
+                        <div class="tool-info">
+                            <h4 class="free-tool-info">Sample Size Calculator</h4>
+                        </div>
+                    </div>
+                    <p class="free-tool-description">Calculate optimal sample sizes for research studies with statistical power analysis.</p>
+                    <button class="tool-action action-free free-tool-action" onclick="window.open('https://drkembhavi.github.io/sample-size-calc/', '_blank')">
+                        Launch Tool
+                    </button>
+                </div>
+
+                <div class="tool-card free-tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon free-tool-icon">🔬</div>
+                        <div class="tool-info">
+                            <h4 class="free-tool-info">Ayurveda Study Design</h4>
+                        </div>
+                    </div>
+                    <p class="free-tool-description">Design clinical studies with Ayurvedic research methodology guidance.</p>
+                    <button class="tool-action action-free free-tool-action" onclick="window.open('https://drkembhavi.github.io/ayurevda-study-design-tool/', '_blank')">
+                        Launch Tool
+                    </button>
+                </div>
+
+                <div class="tool-card free-tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon free-tool-icon">📚</div>
+                        <div class="tool-info">
+                            <h4 class="free-tool-info">Reference Generator</h4>
+                        </div>
+                    </div>
+                    <p class="free-tool-description">Generate medical research references and citations automatically.</p>
+                    <button class="tool-action action-free free-tool-action" onclick="window.open('https://drkembhavi-s.github.io/DRKEMBHAVIS-AI-MEDICAL-RESEARCH-GENERATOR-TOOL/', '_blank')">
+                        Launch Tool
+                    </button>
+                </div>
+
+                <div class="tool-card free-tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon free-tool-icon">📱</div>
+                        <div class="tool-info">
+                            <h4 class="free-tool-info">QR Code Generator</h4>
+                        </div>
+                    </div>
+                    <p class="free-tool-description">Create QR codes for sharing research data, contacts, and links.</p>
+                    <button class="tool-action action-free free-tool-action" onclick="window.open('https://drkembhavi-s.github.io/QR-CODE-GENERATOR/', '_blank')">
+                        Launch Tool
+                    </button>
+                </div>
+
+                <div class="tool-card free-tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon free-tool-icon">🔍</div>
+                        <div class="tool-info">
+                            <h4 class="free-tool-info">Disease Investigation Tool</h4>
+                        </div>
+                    </div>
+                    <p class="free-tool-description">Generate investigation protocols for various diseases and conditions.</p>
+                    <button class="tool-action action-free free-tool-action" onclick="window.open('https://drkembhavi-s.github.io/DRKEMBHAVIS-DISEASE-INVESTIGATIONS-GENERATOR-TOOL/', '_blank')">
+                        Launch Tool
+                    </button>
+                </div>
+            </div>
         </div>
 
         <div class="category-tabs">
@@ -692,23 +687,21 @@
         </div>
 
         <div class="tools-container">
-            <!-- Students Tools -->
             <div id="students-tools" class="tools-grid">
                 <div class="tool-card">
                     <div class="tool-header">
-                        <div class="tool-icon tool-students">📚</div>
+                        <div class="tool-icon tool-students">📊</div>
                         <div class="tool-info">
-                            <h3>Interactive Study Companion</h3>
+                            <h3>BAMS Skill Assessment Tool</h3>
                         </div>
                     </div>
-                    <p class="tool-description">AI-powered study assistant with personalized learning paths, quiz generation, and concept clarification for BAMS students.</p>
+                    <p class="tool-description">Comprehensive skill assessment for BAMS students with performance tracking and personalized feedback.</p>
                     <div class="tool-footer">
                         <div class="tool-tags">
-                            <span class="tool-tag free">Free</span>
-                            <span class="tool-tag">Study Aid</span>
+                            <span class="tool-tag premium">Premium</span>
                         </div>
-                        <button class="tool-action action-free" onclick="accessTool('study-companion', 'free')">
-                            Launch Tool
+                        <button class="tool-action action-premium" onclick="showUpgradeModal()">
+                            Upgrade to Access
                         </button>
                     </div>
                 </div>
@@ -717,16 +710,15 @@
                     <div class="tool-header">
                         <div class="tool-icon tool-students">🎯</div>
                         <div class="tool-info">
-                            <h3>Exam Preparation Assistant</h3>
+                            <h3>Essential Skill Assessment</h3>
                         </div>
                     </div>
-                    <p class="tool-description">Comprehensive exam prep with mock tests, performance analytics, and adaptive learning based on your weak areas.</p>
+                    <p class="tool-description">Evaluate essential skills required for Ayurveda students with comprehensive assessment framework.</p>
                     <div class="tool-footer">
                         <div class="tool-tags">
                             <span class="tool-tag premium">Premium</span>
-                            <span class="tool-tag">Exam Prep</span>
                         </div>
-                        <button class="tool-action action-premium" onclick="accessTool('exam-prep', 'premium')">
+                        <button class="tool-action action-premium" onclick="showUpgradeModal()">
                             Upgrade to Access
                         </button>
                     </div>
@@ -734,44 +726,23 @@
 
                 <div class="tool-card">
                     <div class="tool-header">
-                        <div class="tool-icon tool-students">🌿</div>
+                        <div class="tool-icon tool-students">📋</div>
                         <div class="tool-info">
-                            <h3>Herb Identification System</h3>
+                            <h3>Skill Framework Blueprint</h3>
                         </div>
                     </div>
-                    <p class="tool-description">AI-powered plant recognition with detailed Ayurvedic properties, uses, and contraindications.</p>
-                    <div class="tool-footer">
-                        <div class="tool-tags">
-                            <span class="tool-tag free">Free</span>
-                            <span class="tool-tag">Practical</span>
-                        </div>
-                        <button class="tool-action action-free" onclick="accessTool('herb-identifier', 'free')">
-                            Launch Tool
-                        </button>
-                    </div>
-                </div>
-
-                <div class="tool-card">
-                    <div class="tool-header">
-                        <div class="tool-icon tool-students">💡</div>
-                        <div class="tool-info">
-                            <h3>Case Study Analyzer</h3>
-                        </div>
-                    </div>
-                    <p class="tool-description">Practice clinical reasoning with AI-generated case studies and get instant feedback on your diagnostic approach.</p>
+                    <p class="tool-description">Design your learning path with structured skill development framework and progress monitoring.</p>
                     <div class="tool-footer">
                         <div class="tool-tags">
                             <span class="tool-tag premium">Premium</span>
-                            <span class="tool-tag">Clinical</span>
                         </div>
-                        <button class="tool-action action-premium" onclick="accessTool('case-analyzer', 'premium')">
+                        <button class="tool-action action-premium" onclick="showUpgradeModal()">
                             Upgrade to Access
                         </button>
                     </div>
                 </div>
             </div>
 
-            <!-- Faculty Tools -->
             <div id="faculty-tools" class="tools-grid hidden">
                 <div class="tool-card">
                     <div class="tool-header">
@@ -780,32 +751,12 @@
                             <h3>Teaching Self-Assessment</h3>
                         </div>
                     </div>
-                    <p class="tool-description">Evaluate and improve your teaching methodology with AI-powered analysis and personalized recommendations.</p>
-                    <div class="tool-footer">
-                        <div class="tool-tags">
-                            <span class="tool-tag free">Free</span>
-                            <span class="tool-tag">Self-Assessment</span>
-                        </div>
-                        <button class="tool-action action-free" onclick="accessTool('https://drkembhavi-s.github.io/AYU-TEACHER-SELF-ASSESSMENT-TOOL/', 'free')">
-                            Launch Tool
-                        </button>
-                    </div>
-                </div>
-
-                <div class="tool-card">
-                    <div class="tool-header">
-                        <div class="tool-icon tool-faculty">📋</div>
-                        <div class="tool-info">
-                            <h3>Curriculum Designer</h3>
-                        </div>
-                    </div>
-                    <p class="tool-description">AI-assisted curriculum planning with learning outcome mapping and assessment strategy recommendations.</p>
+                    <p class="tool-description">Evaluate and improve your teaching methodology with AI-powered analysis.</p>
                     <div class="tool-footer">
                         <div class="tool-tags">
                             <span class="tool-tag premium">Premium</span>
-                            <span class="tool-tag">Planning</span>
                         </div>
-                        <button class="tool-action action-premium" onclick="accessTool('curriculum-designer', 'premium')">
+                        <button class="tool-action action-premium" onclick="showUpgradeModal()">
                             Upgrade to Access
                         </button>
                     </div>
@@ -815,42 +766,21 @@
                     <div class="tool-header">
                         <div class="tool-icon tool-faculty">📊</div>
                         <div class="tool-info">
-                            <h3>Student Progress Tracker</h3>
+                            <h3>Hospital Management Tools</h3>
                         </div>
                     </div>
-                    <p class="tool-description">Monitor student performance with AI analytics and generate personalized intervention strategies.</p>
+                    <p class="tool-description">Complete suite of hospital management tools including statistics, pharmacy inventory, and reports.</p>
                     <div class="tool-footer">
                         <div class="tool-tags">
                             <span class="tool-tag premium">Premium</span>
-                            <span class="tool-tag">Analytics</span>
                         </div>
-                        <button class="tool-action action-premium" onclick="accessTool('progress-tracker', 'premium')">
-                            Upgrade to Access
-                        </button>
-                    </div>
-                </div>
-
-                <div class="tool-card">
-                    <div class="tool-header">
-                        <div class="tool-icon tool-faculty">🎓</div>
-                        <div class="tool-info">
-                            <h3>Question Bank Generator</h3>
-                        </div>
-                    </div>
-                    <p class="tool-description">Create diverse, high-quality questions for exams with AI assistance, ensuring proper coverage and difficulty levels.</p>
-                    <div class="tool-footer">
-                        <div class="tool-tags">
-                            <span class="tool-tag premium">Premium</span>
-                            <span class="tool-tag">Assessment</span>
-                        </div>
-                        <button class="tool-action action-premium" onclick="accessTool('question-generator', 'premium')">
+                        <button class="tool-action action-premium" onclick="showUpgradeModal()">
                             Upgrade to Access
                         </button>
                     </div>
                 </div>
             </div>
 
-            <!-- Scholars Tools -->
             <div id="scholars-tools" class="tools-grid hidden">
                 <div class="tool-card">
                     <div class="tool-header">
@@ -859,25 +789,91 @@
                             <h3>Research Scholar Assessment</h3>
                         </div>
                     </div>
-                    <p class="tool-description">Comprehensive evaluation tool for PhD scholars to assess research progress, methodology, and academic performance.</p>
+                    <p class="tool-description">Comprehensive evaluation tool for PhD scholars to assess research progress and methodology.</p>
                     <div class="tool-footer">
                         <div class="tool-tags">
-                            <span class="tool-tag free">Free</span>
-                            <span class="tool-tag">Research</span>
+                            <span class="tool-tag premium">Premium</span>
                         </div>
-                        <button class="tool-action action-free" onclick="accessTool('https://drkembhavi-s.github.io/research-scholar-assessment/', 'free')">
-                            Launch Tool
+                        <button class="tool-action action-premium" onclick="showUpgradeModal()">
+                            Upgrade to Access
                         </button>
                     </div>
                 </div>
 
                 <div class="tool-card">
                     <div class="tool-header">
-                        <div class="tool-icon tool-scholars">📄</div>
+                        <div class="tool-icon tool-scholars">📚</div>
                         <div class="tool-info">
-                            <h3>Literature Review Assistant</h3>
+                            <h3>Dissertation & Research Tools</h3>
                         </div>
                     </div>
-                    <p class="tool-description">AI-powered research paper analysis, citation management, and systematic review assistance for your thesis work.</p>
+                    <p class="tool-description">Complete suite of research tools including methodology MCQs, statistical tests, and dissertation management.</p>
                     <div class="tool-footer">
                         <div class="tool-tags">
+                            <span class="tool-tag premium">Premium</span>
+                        </div>
+                        <button class="tool-action action-premium" onclick="showUpgradeModal()">
+                            Upgrade to Access
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing">
+        <div class="section-header">
+            <h2 class="section-title">Simple, One-Time Pricing</h2>
+            <p class="section-subtitle">Get lifetime access to all premium AI tools with a single payment</p>
+        </div>
+
+        <div class="pricing-card">
+            <div class="price">₹2,999</div>
+            <p class="price-subtitle">One-time payment • Lifetime access</p>
+            
+            <div class="features-list">
+                <div class="feature">
+                    <span class="feature-check">✓</span>
+                    <span>Access to all premium AI tools</span>
+                </div>
+                <div class="feature">
+                    <span class="feature-check">✓</span>
+                    <span>Unlimited usage across all tools</span>
+                </div>
+                <div class="feature">
+                    <span class="feature-check">✓</span>
+                    <span>Regular updates and new tools</span>
+                </div>
+                <div class="feature">
+                    <span class="feature-check">✓</span>
+                    <span>Priority support and assistance</span>
+                </div>
+            </div>
+            
+            <button id="upgradePremiumBtn" class="btn btn-primary" style="width: 100%;">
+                Upgrade to Premium
+            </button>
+        </div>
+    </section>
+
+    <div id="authModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Get Premium Access</h2>
+                <p>Lifetime access to all Ayurveda AI tools for just ₹2,999</p>
+            </div>
+            
+            <form id="registrationForm">
+                <div class="form-group">
+                    <label class="form-label">Full Name</label>
+                    <input type="text" class="form-input" required placeholder="Dr. Your Name">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Email Address</label>
+                    <input type="email" class="form-input" required placeholder="your@email.com">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Institution</label>
+                    <input type="text" class="form-input" required placeholder="College/
