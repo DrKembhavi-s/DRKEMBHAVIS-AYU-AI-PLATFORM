@@ -3,877 +3,1017 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dr Kembhavi's Ayurveda AI Platform</title>
+    <title>DrKembhavi's Academic Tools Hub</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
-        
-        :root {
-            --primary: #1a1a2e;
-            --secondary: #16213e;
-            --text-primary: #2d3436;
-            --text-secondary: #636e72;
-            --white: #ffffff;
-            --gray-50: #f8fafc;
-            --gray-100: #f1f5f9;
-            --gray-200: #e2e8f0;
-            --ai-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --ai-glow: rgba(102, 126, 234, 0.3);
-            --neural-blue: #4299e1;
-            --quantum-purple: #9f7aea;
-            --cyber-green: #48bb78;
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
+        
         body {
-            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--gray-50);
-            color: var(--text-primary);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
+            color: #333;
+            background-color: #f8fafc;
         }
-
-        .header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--gray-200);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .header-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 1rem 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .logo {
-            width: 50px;
-            height: 50px;
-            background: var(--ai-gradient);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            box-shadow: 0 4px 20px var(--ai-glow);
-        }
-
-        .brand-text h1 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary);
-        }
-
-        .brand-text p {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-        }
-
-        .header-actions {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .status-badge {
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: rgba(203, 213, 225, 0.5);
-            color: var(--text-secondary);
-        }
-
-        .hero {
-            text-align: center;
-            padding: 4rem 2rem;
+        
+        .container {
             max-width: 1200px;
             margin: 0 auto;
+            padding: 0 20px;
         }
-
-        .hero h1 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 700;
-            background: var(--ai-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .cta-section {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 3rem;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 0.75rem 2rem;
-            border-radius: 12px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .btn-primary {
-            background: var(--ai-gradient);
-            color: white;
-            box-shadow: 0 4px 20px var(--ai-glow);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px var(--ai-glow);
-        }
-
-        .btn-secondary {
+        
+        /* Header */
+        .header {
             background: white;
-            color: var(--primary);
-            border: 2px solid var(--gray-200);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
-
-        .categories {
-            margin: 4rem 0;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-
-        .section-subtitle {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .free-tools-section {
-            max-width: 1400px;
-            margin: 0 auto 4rem auto;
-            background: white;
-            border-radius: 20px;
-            padding: 2rem;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            border: 1px solid var(--gray-200);
-        }
-
-        .free-tools-header {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-
-        .free-tools-title {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--cyber-green);
-            margin-bottom: 0.5rem;
-        }
-
-        .free-tools-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .category-tabs {
-            display: flex;
-            justify-content: center;
-            gap: 0.5rem;
-            margin-bottom: 3rem;
-            flex-wrap: wrap;
-            max-width: 1400px;
-            margin-left: auto;
-            margin-right: auto;
-            margin-bottom: 3rem;
-        }
-
-        .category-tab {
-            padding: 0.75rem 1.5rem;
-            background: white;
-            border: 2px solid var(--gray-200);
-            border-radius: 50px;
-            color: var(--text-secondary);
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .category-tab.active {
-            background: var(--ai-gradient);
-            color: white;
-            border-color: transparent;
-        }
-
-        .tools-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .tools-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-        }
-
-        .tool-card {
-            background: white;
-            border-radius: 20px;
-            padding: 2rem;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            border: 1px solid var(--gray-200);
-            transition: all 0.3s ease;
-        }
-
-        .tool-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-        }
-
-        .free-tool-card {
-            padding: 1.5rem;
-        }
-
-        .tool-header {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .tool-icon {
-            width: 60px;
-            height: 60px;
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            color: white;
-            flex-shrink: 0;
-        }
-
-        .free-tool-icon {
-            width: 50px;
-            height: 50px;
-            font-size: 1.2rem;
-            background: var(--cyber-green);
-        }
-
-        .tool-students { background: linear-gradient(135deg, var(--neural-blue), #3182ce); }
-        .tool-faculty { background: linear-gradient(135deg, var(--quantum-purple), #805ad5); }
-        .tool-scholars { background: linear-gradient(135deg, var(--cyber-green), #38a169); }
-
-        .tool-info h3 {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--primary);
-        }
-
-        .free-tool-info h4 {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--primary);
-        }
-
-        .tool-description, .free-tool-description {
-            color: var(--text-secondary);
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-        }
-
-        .free-tool-description {
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-
-        .tool-footer {
+        
+        .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
+            padding: 1rem 0;
         }
-
-        .tool-tags {
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2563eb;
+        }
+        
+        .header-buttons {
             display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-        }
-
-        .tool-tag {
-            padding: 0.25rem 0.75rem;
-            background: var(--gray-100);
-            color: var(--text-secondary);
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-
-        .tool-tag.premium { background: rgba(159, 122, 234, 0.1); color: var(--quantum-purple); }
-
-        .tool-action {
-            padding: 0.5rem 1.5rem;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: none;
-            text-decoration: none;
-            display: inline-flex;
+            gap: 1rem;
             align-items: center;
-            gap: 0.5rem;
         }
-
-        .free-tool-action {
-            padding: 0.4rem 1rem;
-            font-size: 0.85rem;
+        
+        .btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
         }
-
-        .action-free {
-            background: var(--cyber-green);
+        
+        .btn-primary {
+            background: #2563eb;
             color: white;
         }
-
-        .action-premium {
-            background: var(--quantum-purple);
-            color: white;
+        
+        .btn-primary:hover {
+            background: #1d4ed8;
         }
-
-        .pricing {
-            background: white;
-            margin: 4rem 0;
-            padding: 4rem 2rem;
+        
+        .btn-secondary {
+            background: transparent;
+            color: #374151;
+            border: 1px solid #d1d5db;
+        }
+        
+        .btn-secondary:hover {
+            background: #f3f4f6;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 5rem 0;
             text-align: center;
         }
-
-        .pricing-card {
-            max-width: 400px;
-            margin: 0 auto;
-            background: var(--gray-50);
-            border-radius: 20px;
-            padding: 2.5rem;
-            border: 2px solid var(--gray-200);
-            position: relative;
-        }
-
-        .pricing-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--ai-gradient);
-        }
-
-        .price {
+        
+        .hero h1 {
             font-size: 3rem;
-            font-weight: 700;
-            color: var(--primary);
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn-white {
+            background: white;
+            color: #2563eb;
+            padding: 0.75rem 2rem;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+            padding: 0.75rem 2rem;
+        }
+        
+        .btn-outline:hover {
+            background: white;
+            color: #2563eb;
+        }
+        
+        /* Categories Section */
+        .categories {
+            padding: 4rem 0;
+            background: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            font-weight: bold;
+        }
+        
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .category-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px rgba(0,0,0,0.15);
+        }
+        
+        .category-badge {
+            background: linear-gradient(45deg, #4f46e5, #7c3aed);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+        
+        .category-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .category-card p {
+            color: #6b7280;
+            margin-bottom: 1rem;
+        }
+        
+        .category-card ul {
+            list-style: none;
+            color: #6b7280;
+            font-size: 0.875rem;
+        }
+        
+        .category-card li {
             margin-bottom: 0.5rem;
         }
-
-        .price-subtitle {
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
+        
+        .category-card li:before {
+            content: "• ";
+            color: #10b981;
+            font-weight: bold;
         }
-
-        .features-list {
+        
+        /* Pricing Section */
+        .pricing {
+            padding: 4rem 0;
+            background: #f8fafc;
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .pricing-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+            position: relative;
+        }
+        
+        .pricing-card.featured {
+            border: 2px solid #2563eb;
+        }
+        
+        .popular-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #2563eb;
+            color: white;
+            padding: 0.25rem 1rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+        
+        .pricing-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+        }
+        
+        .price-suffix {
+            font-size: 1rem;
+            color: #6b7280;
+            font-weight: normal;
+        }
+        
+        .pricing-features {
+            list-style: none;
             text-align: left;
             margin-bottom: 2rem;
         }
-
-        .feature {
+        
+        .pricing-features li {
+            padding: 0.5rem 0;
             display: flex;
             align-items: center;
-            gap: 0.75rem;
-            padding: 0.5rem 0;
-            color: var(--text-secondary);
         }
-
-        .feature-check {
-            width: 20px;
-            height: 20px;
+        
+        .check {
+            color: #10b981;
+            margin-right: 0.5rem;
+            font-weight: bold;
+        }
+        
+        .cross {
+            color: #ef4444;
+            margin-right: 0.5rem;
+            font-weight: bold;
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 4rem 0;
+            background: white;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+        
+        .feature {
+            text-align: center;
+        }
+        
+        .feature-icon {
+            width: 4rem;
+            height: 4rem;
+            background: #dbeafe;
             border-radius: 50%;
-            background: var(--cyber-green);
-            color: white;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.8rem;
-            flex-shrink: 0;
+            margin: 0 auto 1rem;
+            font-size: 1.5rem;
         }
-
-        .hidden {
-            display: none;
+        
+        .feature h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
         }
-
+        
+        /* Footer */
+        .footer {
+            background: #1f2937;
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer h3 {
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .footer p {
+            color: #9ca3af;
+            line-height: 1.6;
+        }
+        
+        .footer ul {
+            list-style: none;
+        }
+        
+        .footer li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer a {
+            color: #9ca3af;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid #374151;
+            padding-top: 1rem;
+            text-align: center;
+            color: #9ca3af;
+        }
+        
+        /* Modal Styles */
         .modal {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(5px);
-            display: flex;
+            background: rgba(0,0,0,0.5);
+            display: none;
             align-items: center;
             justify-content: center;
-            z-index: 1000;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
+            z-index: 2000;
         }
-
-        .modal.active {
-            opacity: 1;
-            visibility: visible;
+        
+        .modal.show {
+            display: flex;
         }
-
+        
         .modal-content {
             background: white;
-            border-radius: 20px;
-            padding: 2.5rem;
-            width: 90%;
+            padding: 2rem;
+            border-radius: 12px;
             max-width: 500px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
-            position: relative;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
         }
-
-        .modal-header {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-
-        .modal-header h2 {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .form-group {
+        
+        .modal h2 {
             margin-bottom: 1.5rem;
+            font-weight: 600;
         }
-
-        .form-label {
+        
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        .form-group label {
             display: block;
             margin-bottom: 0.5rem;
-            font-weight: 600;
-            color: var(--text-primary);
+            font-weight: 500;
         }
-
-        .form-input, .form-select {
+        
+        .form-group input,
+        .form-group select {
             width: 100%;
-            padding: 0.75rem 1rem;
-            border: 2px solid var(--gray-200);
-            border-radius: 12px;
+            padding: 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
             font-size: 1rem;
-            transition: border-color 0.3s ease;
         }
-
-        .form-input:focus, .form-select:focus {
+        
+        .form-group input:focus,
+        .form-group select:focus {
             outline: none;
-            border-color: var(--neural-blue);
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
         }
-
-        .loading {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 2px solid transparent;
-            border-top: 2px solid currentColor;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
+        
+        .modal-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
         }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        
+        .modal-buttons .btn {
+            flex: 1;
         }
-
+        
+        .btn-gray {
+            background: #e5e7eb;
+            color: #374151;
+        }
+        
+        .btn-gray:hover {
+            background: #d1d5db;
+        }
+        
+        /* Dashboard Styles */
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .tool-card {
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 1.5rem;
+            background: white;
+            transition: box-shadow 0.3s ease;
+        }
+        
+        .tool-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .tool-card h4 {
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .tool-card p {
+            color: #6b7280;
+            margin-bottom: 1rem;
+            font-size: 0.875rem;
+        }
+        
+        .btn-small {
+            padding: 0.5rem 1rem;
+            font-size: 0.875rem;
+        }
+        
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                gap: 1rem;
-                text-align: center;
+            .hero h1 {
+                font-size: 2rem;
             }
-
-            .hero {
-                padding: 2rem 1rem;
+            
+            .hero p {
+                font-size: 1rem;
             }
-
-            .cta-section {
+            
+            .hero-buttons {
                 flex-direction: column;
                 align-items: center;
             }
-
-            .btn {
-                width: 100%;
-                max-width: 300px;
-                justify-content: center;
-            }
-
-            .tools-grid, .free-tools-grid {
+            
+            .category-grid {
                 grid-template-columns: 1fr;
-                gap: 1.5rem;
             }
-
-            .free-tools-section {
-                margin: 0 1rem 4rem 1rem;
+            
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Header -->
     <header class="header">
-        <div class="header-content">
-            <div class="brand">
-                <div class="logo">🧠</div>
-                <div class="brand-text">
-                    <h1>Dr Kembhavi's AI Platform</h1>
-                    <p>Advanced Ayurveda AI Tools</p>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">DrKembhavi Tools</div>
+                <div class="header-buttons" id="headerButtons">
+                    <button onclick="showLogin()" class="btn btn-secondary">Login</button>
+                    <button onclick="showRegister()" class="btn btn-primary">Get Started</button>
                 </div>
-            </div>
-            <div class="header-actions">
-                <div id="userStatus" class="status-badge">
-                    <span>👤</span>
-                    <span>Guest User</span>
-                </div>
-                <button id="authBtn" class="btn btn-primary">Get Started</button>
             </div>
         </div>
     </header>
 
+    <!-- Hero Section -->
     <section class="hero">
-        <h1>Revolutionary AI Tools for Ayurveda</h1>
-        <p>Empowering students, faculty, and scholars with cutting-edge artificial intelligence designed specifically for Ayurvedic education, research, and practice.</p>
-        
-        <div class="cta-section">
-            <button id="startFreeBtn" class="btn btn-primary">Start Free Trial</button>
-            <button id="learnMoreBtn" class="btn btn-secondary">Explore Tools</button>
+        <div class="container">
+            <h1>Academic Tools for Every Level</h1>
+            <p>Comprehensive GitHub tools designed specifically for College administrators, Faculty, UG Students, and PG Scholars. Streamline your academic workflow today.</p>
+            <div class="hero-buttons">
+                <button onclick="showRegister()" class="btn btn-white">Start Free Trial</button>
+                <button onclick="scrollToPricing()" class="btn btn-outline">View Pricing</button>
+            </div>
         </div>
     </section>
 
+    <!-- Categories Section -->
     <section class="categories">
-        <div class="section-header">
-            <h2 class="section-title">Choose Your Path</h2>
-            <p class="section-subtitle">Tailored AI tools designed for every stage of your Ayurvedic journey</p>
-        </div>
-
-        <div class="free-tools-section">
-            <div class="free-tools-header">
-                <h3 class="free-tools-title">🆓 Free Access Tools</h3>
-                <p style="color: var(--text-secondary);">Available to everyone - no registration required</p>
-            </div>
-            
-            <div class="free-tools-grid">
-                <div class="tool-card free-tool-card">
-                    <div class="tool-header">
-                        <div class="tool-icon free-tool-icon">🎯</div>
-                        <div class="tool-info">
-                            <h4 class="free-tool-info">Sample Size Calculator</h4>
-                        </div>
-                    </div>
-                    <p class="free-tool-description">Calculate optimal sample sizes for research studies with statistical power analysis.</p>
-                    <button class="tool-action action-free free-tool-action" onclick="window.open('https://drkembhavi.github.io/sample-size-calc/', '_blank')">
-                        Launch Tool
-                    </button>
+        <div class="container">
+            <h2 class="section-title">Tools for Every Academic Role</h2>
+            <div class="category-grid">
+                <div class="category-card">
+                    <div class="category-badge">College</div>
+                    <h3>College Administration</h3>
+                    <p>Tools for managing admissions, student records, faculty coordination, and institutional analytics.</p>
+                    <ul>
+                        <li>Student Management System</li>
+                        <li>Admission Portal</li>
+                        <li>Faculty Scheduler</li>
+                        <li>Report Generator</li>
+                    </ul>
                 </div>
-
-                <div class="tool-card free-tool-card">
-                    <div class="tool-header">
-                        <div class="tool-icon free-tool-icon">🔬</div>
-                        <div class="tool-info">
-                            <h4 class="free-tool-info">Ayurveda Study Design</h4>
-                        </div>
-                    </div>
-                    <p class="free-tool-description">Design clinical studies with Ayurvedic research methodology guidance.</p>
-                    <button class="tool-action action-free free-tool-action" onclick="window.open('https://drkembhavi.github.io/ayurevda-study-design-tool/', '_blank')">
-                        Launch Tool
-                    </button>
+                
+                <div class="category-card">
+                    <div class="category-badge">Faculty</div>
+                    <h3>Faculty Tools</h3>
+                    <p>Streamline teaching, grading, research management, and student interaction processes.</p>
+                    <ul>
+                        <li>Grade Calculator</li>
+                        <li>Assignment Tracker</li>
+                        <li>Research Paper Manager</li>
+                        <li>Class Scheduler</li>
+                    </ul>
                 </div>
-
-                <div class="tool-card free-tool-card">
-                    <div class="tool-header">
-                        <div class="tool-icon free-tool-icon">📚</div>
-                        <div class="tool-info">
-                            <h4 class="free-tool-info">Reference Generator</h4>
-                        </div>
-                    </div>
-                    <p class="free-tool-description">Generate medical research references and citations automatically.</p>
-                    <button class="tool-action action-free free-tool-action" onclick="window.open('https://drkembhavi-s.github.io/DRKEMBHAVIS-AI-MEDICAL-RESEARCH-GENERATOR-TOOL/', '_blank')">
-                        Launch Tool
-                    </button>
+                
+                <div class="category-card">
+                    <div class="category-badge">UG Students</div>
+                    <h3>Undergraduate Tools</h3>
+                    <p>Essential tools for coursework management, project tracking, and academic planning.</p>
+                    <ul>
+                        <li>Course Planner</li>
+                        <li>GPA Calculator</li>
+                        <li>Project Organizer</li>
+                        <li>Study Timer</li>
+                    </ul>
                 </div>
-
-                <div class="tool-card free-tool-card">
-                    <div class="tool-header">
-                        <div class="tool-icon free-tool-icon">📱</div>
-                        <div class="tool-info">
-                            <h4 class="free-tool-info">QR Code Generator</h4>
-                        </div>
-                    </div>
-                    <p class="free-tool-description">Create QR codes for sharing research data, contacts, and links.</p>
-                    <button class="tool-action action-free free-tool-action" onclick="window.open('https://drkembhavi-s.github.io/QR-CODE-GENERATOR/', '_blank')">
-                        Launch Tool
-                    </button>
-                </div>
-
-                <div class="tool-card free-tool-card">
-                    <div class="tool-header">
-                        <div class="tool-icon free-tool-icon">🔍</div>
-                        <div class="tool-info">
-                            <h4 class="free-tool-info">Disease Investigation Tool</h4>
-                        </div>
-                    </div>
-                    <p class="free-tool-description">Generate investigation protocols for various diseases and conditions.</p>
-                    <button class="tool-action action-free free-tool-action" onclick="window.open('https://drkembhavi-s.github.io/DRKEMBHAVIS-DISEASE-INVESTIGATIONS-GENERATOR-TOOL/', '_blank')">
-                        Launch Tool
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <div class="category-tabs">
-            <div class="category-tab active" data-category="students">👨‍🎓 Students</div>
-            <div class="category-tab" data-category="faculty">👩‍🏫 Faculty</div>
-            <div class="category-tab" data-category="scholars">🔬 PG Scholars</div>
-        </div>
-
-        <div class="tools-container">
-            <div id="students-tools" class="tools-grid">
-                <div class="tool-card">
-                    <div class="tool-header">
-                        <div class="tool-icon tool-students">📊</div>
-                        <div class="tool-info">
-                            <h3>BAMS Skill Assessment Tool</h3>
-                        </div>
-                    </div>
-                    <p class="tool-description">Comprehensive skill assessment for BAMS students with performance tracking and personalized feedback.</p>
-                    <div class="tool-footer">
-                        <div class="tool-tags">
-                            <span class="tool-tag premium">Premium</span>
-                        </div>
-                        <button class="tool-action action-premium" onclick="showUpgradeModal()">
-                            Upgrade to Access
-                        </button>
-                    </div>
-                </div>
-
-                <div class="tool-card">
-                    <div class="tool-header">
-                        <div class="tool-icon tool-students">🎯</div>
-                        <div class="tool-info">
-                            <h3>Essential Skill Assessment</h3>
-                        </div>
-                    </div>
-                    <p class="tool-description">Evaluate essential skills required for Ayurveda students with comprehensive assessment framework.</p>
-                    <div class="tool-footer">
-                        <div class="tool-tags">
-                            <span class="tool-tag premium">Premium</span>
-                        </div>
-                        <button class="tool-action action-premium" onclick="showUpgradeModal()">
-                            Upgrade to Access
-                        </button>
-                    </div>
-                </div>
-
-                <div class="tool-card">
-                    <div class="tool-header">
-                        <div class="tool-icon tool-students">📋</div>
-                        <div class="tool-info">
-                            <h3>Skill Framework Blueprint</h3>
-                        </div>
-                    </div>
-                    <p class="tool-description">Design your learning path with structured skill development framework and progress monitoring.</p>
-                    <div class="tool-footer">
-                        <div class="tool-tags">
-                            <span class="tool-tag premium">Premium</span>
-                        </div>
-                        <button class="tool-action action-premium" onclick="showUpgradeModal()">
-                            Upgrade to Access
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <div id="faculty-tools" class="tools-grid hidden">
-                <div class="tool-card">
-                    <div class="tool-header">
-                        <div class="tool-icon tool-faculty">👩‍🏫</div>
-                        <div class="tool-info">
-                            <h3>Teaching Self-Assessment</h3>
-                        </div>
-                    </div>
-                    <p class="tool-description">Evaluate and improve your teaching methodology with AI-powered analysis.</p>
-                    <div class="tool-footer">
-                        <div class="tool-tags">
-                            <span class="tool-tag premium">Premium</span>
-                        </div>
-                        <button class="tool-action action-premium" onclick="showUpgradeModal()">
-                            Upgrade to Access
-                        </button>
-                    </div>
-                </div>
-
-                <div class="tool-card">
-                    <div class="tool-header">
-                        <div class="tool-icon tool-faculty">📊</div>
-                        <div class="tool-info">
-                            <h3>Hospital Management Tools</h3>
-                        </div>
-                    </div>
-                    <p class="tool-description">Complete suite of hospital management tools including statistics, pharmacy inventory, and reports.</p>
-                    <div class="tool-footer">
-                        <div class="tool-tags">
-                            <span class="tool-tag premium">Premium</span>
-                        </div>
-                        <button class="tool-action action-premium" onclick="showUpgradeModal()">
-                            Upgrade to Access
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <div id="scholars-tools" class="tools-grid hidden">
-                <div class="tool-card">
-                    <div class="tool-header">
-                        <div class="tool-icon tool-scholars">🔬</div>
-                        <div class="tool-info">
-                            <h3>Research Scholar Assessment</h3>
-                        </div>
-                    </div>
-                    <p class="tool-description">Comprehensive evaluation tool for PhD scholars to assess research progress and methodology.</p>
-                    <div class="tool-footer">
-                        <div class="tool-tags">
-                            <span class="tool-tag premium">Premium</span>
-                        </div>
-                        <button class="tool-action action-premium" onclick="showUpgradeModal()">
-                            Upgrade to Access
-                        </button>
-                    </div>
-                </div>
-
-                <div class="tool-card">
-                    <div class="tool-header">
-                        <div class="tool-icon tool-scholars">📚</div>
-                        <div class="tool-info">
-                            <h3>Dissertation & Research Tools</h3>
-                        </div>
-                    </div>
-                    <p class="tool-description">Complete suite of research tools including methodology MCQs, statistical tests, and dissertation management.</p>
-                    <div class="tool-footer">
-                        <div class="tool-tags">
-                            <span class="tool-tag premium">Premium</span>
-                        </div>
-                        <button class="tool-action action-premium" onclick="showUpgradeModal()">
-                            Upgrade to Access
-                        </button>
-                    </div>
+                
+                <div class="category-card">
+                    <div class="category-badge">PG Scholars</div>
+                    <h3>Postgraduate Tools</h3>
+                    <p>Advanced tools for research, thesis writing, data analysis, and academic publishing.</p>
+                    <ul>
+                        <li>Research Tracker</li>
+                        <li>Citation Manager</li>
+                        <li>Data Analyzer</li>
+                        <li>Thesis Formatter</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="pricing">
-        <div class="section-header">
-            <h2 class="section-title">Simple, One-Time Pricing</h2>
-            <p class="section-subtitle">Get lifetime access to all premium AI tools with a single payment</p>
-        </div>
-
-        <div class="pricing-card">
-            <div class="price">₹2,999</div>
-            <p class="price-subtitle">One-time payment • Lifetime access</p>
-            
-            <div class="features-list">
-                <div class="feature">
-                    <span class="feature-check">✓</span>
-                    <span>Access to all premium AI tools</span>
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <h2 class="section-title">Simple, Transparent Pricing</h2>
+            <div class="pricing-grid">
+                <!-- Free Plan -->
+                <div class="pricing-card">
+                    <h3>Free Access</h3>
+                    <div class="price">₹0</div>
+                    <ul class="pricing-features">
+                        <li><span class="check">✓</span>Basic Calculator Tools</li>
+                        <li><span class="check">✓</span>Simple Organizers</li>
+                        <li><span class="check">✓</span>Community Support</li>
+                        <li><span class="cross">✗</span>Advanced Analytics</li>
+                        <li><span class="cross">✗</span>Premium Tools</li>
+                    </ul>
+                    <button onclick="registerUser('free')" class="btn btn-gray" style="width: 100%;">Get Free Access</button>
                 </div>
-                <div class="feature">
-                    <span class="feature-check">✓</span>
-                    <span>Unlimited usage across all tools</span>
-                </div>
-                <div class="feature">
-                    <span class="feature-check">✓</span>
-                    <span>Regular updates and new tools</span>
-                </div>
-                <div class="feature">
-                    <span class="feature-check">✓</span>
-                    <span>Priority support and assistance</span>
+                
+                <!-- Premium Plan -->
+                <div class="pricing-card featured">
+                    <div class="popular-badge">Most Popular</div>
+                    <h3>Premium Access</h3>
+                    <div class="price">₹499 <span class="price-suffix">/ lifetime</span></div>
+                    <ul class="pricing-features">
+                        <li><span class="check">✓</span>All Free Tools</li>
+                        <li><span class="check">✓</span>Advanced Analytics</li>
+                        <li><span class="check">✓</span>Premium Tools Suite</li>
+                        <li><span class="check">✓</span>Priority Support</li>
+                        <li><span class="check">✓</span>Lifetime Updates</li>
+                    </ul>
+                    <button onclick="registerUser('premium')" class="btn btn-primary" style="width: 100%;">Get Premium Access</button>
                 </div>
             </div>
-            
-            <button id="upgradePremiumBtn" class="btn btn-primary" style="width: 100%;">
-                Upgrade to Premium
-            </button>
         </div>
     </section>
 
-    <div id="authModal" class="modal">
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Why Choose DrKembhavi Tools?</h2>
+            <div class="features-grid">
+                <div class="feature">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Lightning Fast</h3>
+                    <p>Optimized tools that work instantly, saving you valuable time on academic tasks.</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Reliable & Secure</h3>
+                    <p>Built with industry-standard security practices and reliable performance.</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">🎓</div>
+                    <h3>Made for Academics</h3>
+                    <p>Designed specifically for the Indian academic system and workflow.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3>DrKembhavi Tools</h3>
+                    <p>Empowering academic excellence through innovative tools and solutions.</p>
+                </div>
+                <div>
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Support</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Categories</h3>
+                    <ul>
+                        <li><a href="#">College Tools</a></li>
+                        <li><a href="#">Faculty Tools</a></li>
+                        <li><a href="#">Student Tools</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Connect</h3>
+                    <ul>
+                        <li><a href="https://github.com/DrKembhavi-s">GitHub</a></li>
+                        <li><a href="#">LinkedIn</a></li>
+                        <li><a href="#">Twitter</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 DrKembhavi. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Registration Modal -->
+    <div id="registerModal" class="modal">
         <div class="modal-content">
-            <div class="modal-header">
-                <h2>Get Premium Access</h2>
-                <p>Lifetime access to all Ayurveda AI tools for just ₹2,999</p>
+            <h2>Register for Access</h2>
+            <form id="registerForm">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" id="userName" required>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="userEmail" required>
+                </div>
+                <div class="form-group">
+                    <label>Category</label>
+                    <select id="userCategory" required>
+                        <option value="">Select your category</option>
+                        <option value="college">College Administration</option>
+                        <option value="faculty">Faculty</option>
+                        <option value="ug">UG Student</option>
+                        <option value="pg">PG Scholar</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Institution</label>
+                    <input type="text" id="userInstitution" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="userPassword" required>
+                </div>
+                <div class="modal-buttons">
+                    <button type="button" onclick="closeModal('registerModal')" class="btn btn-gray">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Register</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <h2>Login to Your Account</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="loginEmail" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="loginPassword" required>
+                </div>
+                <div class="modal-buttons">
+                    <button type="button" onclick="closeModal('loginModal')" class="btn btn-gray">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Dashboard Modal -->
+    <div id="dashboardModal" class="modal">
+        <div class="modal-content" style="max-width: 900px;">
+            <div class="dashboard-header">
+                <h2>Your Tools Dashboard</h2>
+                <button onclick="logout()" class="btn" style="background: #ef4444; color: white;">Logout</button>
             </div>
+            <div id="dashboardContent">
+                <!-- Dashboard content will be populated by JavaScript -->
+            </div>
+            <button onclick="closeModal('dashboardModal')" class="btn btn-gray" style="margin-top: 1.5rem;">Close</button>
+        </div>
+    </div>
+
+    <script>
+        let currentUser = null;
+        let planType = null;
+
+        // Modal functions
+        function showRegister() {
+            document.getElementById('registerModal').classList.add('show');
+        }
+
+        function showLogin() {
+            document.getElementById('loginModal').classList.add('show');
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('show');
+        }
+
+        function registerUser(plan) {
+            planType = plan;
+            showRegister();
+        }
+
+        function scrollToPricing() {
+            document.getElementById('pricing').scrollIntoView({behavior: 'smooth'});
+        }
+
+        // Registration form handler
+        document.getElementById('registerForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
             
-            <form id="registrationForm">
-                <div class="form-group">
-                    <label class="form-label">Full Name</label>
-                    <input type="text" class="form-input" required placeholder="Dr. Your Name">
+            const userData = {
+                name: document.getElementById('userName').value,
+                email: document.getElementById('userEmail').value,
+                category: document.getElementById('userCategory').value,
+                institution: document.getElementById('userInstitution').value,
+                password: document.getElementById('userPassword').value,
+                plan: planType || 'free'
+            };
+
+            try {
+                if (userData.plan === 'premium') {
+                    await processPayment(userData);
+                } else {
+                    // Free registration
+                    localStorage.setItem('userData', JSON.stringify(userData));
+                    currentUser = userData;
+                    closeModal('registerModal');
+                    showDashboard();
+                    alert('🎉 Registration successful! Welcome to your free tools.');
+                }
+            } catch (error) {
+                alert('Registration failed: ' + error.message);
+            }
+        });
+
+        // Login form handler
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            
+            const storedUser = localStorage.getItem('userData');
+            if (storedUser) {
+                const userData = JSON.parse(storedUser);
+                if (userData.email === email && userData.password === password) {
+                    currentUser = userData;
+                    closeModal('loginModal');
+                    showDashboard();
+                } else {
+                    alert('Invalid credentials');
+                }
+            } else {
+                alert('User not found. Please register first.');
+            }
+        });
+
+        // Payment processing (Demo version)
+        async function processPayment(userData) {
+            const proceedWithPayment = confirm(
+                `🔥 PREMIUM ACCESS CHECKOUT 🔥\n\n` +
+                `Plan: Premium Lifetime Access\n` +
+                `Amount: ₹499\n` +
+                `Tools: All ${userData.category} tools + Premium features\n\n` +
+                `Click OK to simulate payment success\n` +
+                `(In production, this will process real payment)`
+            );
+            
+            if (proceedWithPayment) {
+                const paymentButton = document.querySelector('#registerForm button[type="submit"]');
+                paymentButton.textContent = 'Processing Payment...';
+                paymentButton.disabled = true;
+                
+                // Simulate payment processing delay
+                await new Promise(resolve => setTimeout(resolve, 2000));
+                
+                userData.paid = true;
+                userData.paymentId = 'demo_' + Date.now();
+                userData.paymentDate = new Date().toISOString();
+                currentUser = userData;
+                
+                localStorage.setItem('userData', JSON.stringify(userData));
+                closeModal('registerModal');
+                showDashboard();
+                
+                alert('🎉 Payment Successful!\n\nWelcome to Premium Access!\nYou now have lifetime access to all premium tools.');
+                
+                paymentButton.textContent = 'Register';
+                paymentButton.disabled = false;
+            } else {
+                throw new Error('Payment cancelled by user');
+            }
+        }
+
+        // Dashboard display
+        function showDashboard() {
+            const tools = getToolsForUser(currentUser);
+            const dashboardContent = document.getElementById('dashboardContent');
+            
+            dashboardContent.innerHTML = `
+                <div style="margin-bottom: 2rem;">
+                    <h3 style="margin-bottom: 0.5rem;">Welcome, ${currentUser.name}!</h3>
+                    <p style="color: #6b7280;">Category: ${getCategoryName(currentUser.category)} | Plan: ${currentUser.plan === 'premium' || currentUser.paid ? 'Premium' : 'Free'}</p>
                 </div>
                 
-                <div class="form-group">
-                    <label class="form-label">Email Address</label>
-                    <input type="email" class="form-input" required placeholder="your@email.com">
+                <div class="dashboard-grid">
+                    ${tools.map(tool => `
+                        <div class="tool-card">
+                            <h4>${tool.name}</h4>
+                            <p>${tool.description}</p>
+                            <a href="${tool.url}" target="_blank" class="btn btn-primary btn-small">
+                                Access Tool
+                            </a>
+                        </div>
+                    `).join('')}
                 </div>
-                
-                <div class="form-group">
-                    <label class="form-label">Institution</label>
-                    <input type="text" class="form-input" required placeholder="College/
+            `;
+            
+            document.getElementById('dashboardModal').classList.add('show');
+            updateHeader();
+        }
+
+        // Get tools based on user category and plan
+        function getToolsForUser(user) {
+            const baseTools = {
+                college: [
+                    { name: "Student Manager", description: "Basic student record management", url: "https://github.com/DrKembhavi-s/student-manager" },
+                    { name: "Basic Reports", description: "Generate simple academic reports", url: "https://github.com/DrKembhavi-s/basic-reports" }
+                ],
+                faculty: [
+                    { name: "Grade Calculator", description: "Calculate student grades easily", url: "https://github.com/DrKembhavi-s/grade-calculator" },
+                    { name: "Class Scheduler", description: "Schedule classes and meetings", url: "https://github.com/DrKembhavi-s/class-scheduler" }
+                ],
+                ug: [
+                    { name: "GPA Calculator", description: "Calculate your GPA", url: "https://github.com/DrKembhavi-s/gpa-calculator" },
+                    { name: "Study Planner", description: "Plan your study schedule", url: "https://github.com/DrKembhavi-s/study-planner" }
+                ],
+                pg: [
+                    { name: "Research Tracker", description: "Track your research progress", url: "https://github.com/DrKembhavi-s/research-tracker" },
+                    { name: "Citation Helper", description: "Format citations correctly", url: "https://github.com/DrKembhavi-s/citation-helper" }
+                ]
+            };
+
+            const premiumTools = {
+                college: [
+                    { name: "Advanced Analytics", description: "Deep institutional insights", url: "https://github.com/DrKembhavi-s/advanced-analytics" },
+                    { name: "Admission Portal Pro", description: "Complete admission management", url: "https://github.com/DrKembhavi-s/admission-portal-pro" }
+                ],
+                faculty: [
+                    { name: "Research Assistant", description: "AI-powered research tools", url: "https://github.com/DrKembhavi-s/research-assistant" },
+                    { name: "Auto Grader", description: "Automated assignment grading", url: "https://github.com/DrKembhavi-s/auto-grader" }
+                ],
+                ug: [
+                    { name: "Career Planner", description: "Plan your career path", url: "https://github.com/DrKembhavi-s/career-planner" },
+                    { name: "Skill Tracker", description: "Track your skill development", url: "https://github.com/DrKembhavi-s/skill-tracker" }
+                ],
+                pg: [
+                    { name: "Publication Manager", description: "Manage your publications", url: "https://github.com/DrKembhavi-s/publication-manager" },
+                    { name: "Data Analyzer Pro", description: "Advanced data analysis tools", url: "https://github.com/DrKembhavi-s/data-analyzer-pro" }
+                ]
+            };
+
+            let tools = baseTools[user.category] || [];
+            
+            if (user.plan === 'premium' || user.paid) {
+                tools = [...tools, ...(premiumTools[user.category] || [])];
+            }
+            
+            return tools;
+        }
+
+        function getCategoryName(category) {
+            const names = {
+                college: 'College Administration',
+                faculty: 'Faculty',
+                ug: 'UG Student',
+                pg: 'PG Scholar'
+            };
+            return names[category] || category;
+        }
+
+        function updateHeader() {
+            const headerButtons = document.getElementById('headerButtons');
+            if (currentUser) {
+                headerButtons.innerHTML = `
+                    <span style="color: #374151;">Welcome, ${currentUser.name}</span>
+                    <button onclick="showDashboard()" class="btn btn-primary">Dashboard</button>
+                `;
+            } else {
+                headerButtons.innerHTML = `
+                    <button onclick="showLogin()" class="btn btn-secondary">Login</button>
+                    <button onclick="showRegister()" class="btn btn-primary">Get Started</button>
+                `;
+            }
+        }
+
+        function logout() {
+            currentUser = null;
+            localStorage.removeItem('userData');
+            closeModal('dashboardModal');
+            updateHeader();
+            alert('Logged out successfully!');
+        }
+
+        // Check if user is already logged in
+        window.addEventListener('load', function() {
+            const storedUser = localStorage.getItem('userData');
+            if (storedUser) {
+                currentUser = JSON.parse(storedUser);
+                updateHeader();
+            }
+        });
+
+        // Close modal when clicking outside
+        window.addEventListener('click', function(e) {
+            if (e.target.classList.contains('modal')) {
+                e.target.classList.remove('show');
+            }
+        });
+    </script>
+</body>
+</html>
