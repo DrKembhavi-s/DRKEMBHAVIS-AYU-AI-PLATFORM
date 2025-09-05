@@ -1026,13 +1026,9 @@
 
             let tools = [...freeTools]; // Everyone gets free tools
             
-            // Add category-specific tools for free users
-            if (user.plan === 'free' && categoryTools[user.category]) {
-                tools = [...tools, ...categoryTools[user.category]];
-            }
-            
-            // Premium users get access to all tools from all categories
-            if (user.plan === 'premium' || user.paid) {
+            // Add category-specific tools for all users during testing
+            if (TESTING_MODE) {
+                // In testing mode, everyone gets access to all tools
                 Object.values(categoryTools).forEach(categoryToolList => {
                     categoryToolList.forEach(tool => {
                         if (!tools.find(t => t.url === tool.url)) {
@@ -1040,6 +1036,22 @@
                         }
                     });
                 });
+            } else {
+                // Normal mode - category-specific access
+                if (user.plan === 'free' && categoryTools[user.category]) {
+                    tools = [...tools, ...categoryTools[user.category]];
+                }
+                
+                // Premium users get access to all tools from all categories
+                if (user.plan === 'premium' || user.paid) {
+                    Object.values(categoryTools).forEach(categoryToolList => {
+                        categoryToolList.forEach(tool => {
+                            if (!tools.find(t => t.url === tool.url)) {
+                                tools.push(tool);
+                            }
+                        });
+                    });
+                }
             }
             
             return tools;
