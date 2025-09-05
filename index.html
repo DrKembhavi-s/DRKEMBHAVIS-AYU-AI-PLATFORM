@@ -24,12 +24,35 @@
             padding: 0 20px;
         }
         
+        /* Testing Banner */
+        .testing-banner {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+            font-weight: bold;
+            position: sticky;
+            top: 0;
+            z-index: 1001;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .testing-banner h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .testing-banner p {
+            margin: 0;
+            opacity: 0.9;
+        }
+        
         /* Header */
         .header {
             background: white;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             position: sticky;
-            top: 0;
+            top: 60px;
             z-index: 1000;
         }
         
@@ -53,33 +76,79 @@
         }
         
         .btn {
-            padding: 0.5rem 1rem;
+            padding: 12px 24px;
             border: none;
-            border-radius: 6px;
+            border-radius: 8px;
             cursor: pointer;
-            font-weight: 500;
+            font-weight: 600;
             text-decoration: none;
             display: inline-block;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
+            font-size: 16px;
+            text-align: center;
+            min-height: 48px;
+            line-height: 1.4;
+            box-sizing: border-box;
+            vertical-align: middle;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
         }
         
         .btn-primary {
             background: #2563eb;
             color: white;
+            border: 2px solid #2563eb;
         }
         
         .btn-primary:hover {
             background: #1d4ed8;
+            border-color: #1d4ed8;
+            color: white;
         }
         
         .btn-secondary {
             background: transparent;
             color: #374151;
-            border: 1px solid #d1d5db;
+            border: 2px solid #d1d5db;
         }
         
         .btn-secondary:hover {
             background: #f3f4f6;
+            border-color: #9ca3af;
+            color: #374151;
+        }
+        
+        .btn-white {
+            background: white;
+            color: #2563eb;
+            padding: 16px 32px;
+            font-weight: 700;
+            border: 2px solid white;
+            font-size: 18px;
+        }
+        
+        .btn-white:hover {
+            background: #f8fafc;
+            color: #1d4ed8;
+            border-color: #f8fafc;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+            padding: 16px 32px;
+            font-weight: 700;
+            font-size: 18px;
+        }
+        
+        .btn-outline:hover {
+            background: white;
+            color: #2563eb;
+            border-color: white;
         }
         
         /* Hero Section */
@@ -111,24 +180,6 @@
             flex-wrap: wrap;
         }
         
-        .btn-white {
-            background: white;
-            color: #2563eb;
-            padding: 0.75rem 2rem;
-        }
-        
-        .btn-outline {
-            background: transparent;
-            color: white;
-            border: 2px solid white;
-            padding: 0.75rem 2rem;
-        }
-        
-        .btn-outline:hover {
-            background: white;
-            color: #2563eb;
-        }
-        
         /* Categories Section */
         .categories {
             padding: 4rem 0;
@@ -144,7 +195,7 @@
         
         .category-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
         }
         
@@ -183,108 +234,34 @@
             margin-bottom: 1rem;
         }
         
-        .category-card ul {
-            list-style: none;
-            color: #6b7280;
-            font-size: 0.875rem;
-        }
-        
-        .category-card li {
-            margin-bottom: 0.5rem;
-        }
-        
-        .category-card li:before {
-            content: "• ";
-            color: #10b981;
-            font-weight: bold;
-        }
-        
-        /* Pricing Section */
-        .pricing {
-            padding: 4rem 0;
-            background: #f8fafc;
-        }
-        
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .pricing-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            text-align: center;
-            position: relative;
-        }
-        
-        .pricing-card.featured {
-            border: 2px solid #2563eb;
-        }
-        
-        .popular-badge {
-            position: absolute;
-            top: -12px;
-            left: 50%;
-            transform: translateX(-50%);
+        /* Tool buttons */
+        .tool-btn {
+            display: block;
+            width: calc(100% - 0.5rem);
+            margin: 0.25rem;
+            padding: 12px 16px;
             background: #2563eb;
             color: white;
-            padding: 0.25rem 1rem;
-            border-radius: 20px;
-            font-size: 0.875rem;
-            font-weight: 600;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            text-align: center;
+            transition: all 0.2s ease;
+            border: none;
+            font-size: 14px;
         }
         
-        .pricing-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-        
-        .price {
-            font-size: 2.5rem;
-            font-weight: bold;
-            margin-bottom: 1.5rem;
-        }
-        
-        .price-suffix {
-            font-size: 1rem;
-            color: #6b7280;
-            font-weight: normal;
-        }
-        
-        .pricing-features {
-            list-style: none;
-            text-align: left;
-            margin-bottom: 2rem;
-        }
-        
-        .pricing-features li {
-            padding: 0.5rem 0;
-            display: flex;
-            align-items: center;
-        }
-        
-        .check {
-            color: #10b981;
-            margin-right: 0.5rem;
-            font-weight: bold;
-        }
-        
-        .cross {
-            color: #ef4444;
-            margin-right: 0.5rem;
-            font-weight: bold;
+        .tool-btn:hover {
+            background: #1d4ed8;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+            color: white;
         }
         
         /* Features Section */
         .features {
             padding: 4rem 0;
-            background: white;
+            background: #f8fafc;
         }
         
         .features-grid {
@@ -364,168 +341,147 @@
             color: #9ca3af;
         }
         
-        /* Modal Styles */
-        .modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            z-index: 2000;
-        }
-        
-        .modal.show {
-            display: flex;
-        }
-        
-        .modal-content {
-            background: white;
-            padding: 2rem;
-            border-radius: 12px;
-            max-width: 500px;
-            width: 90%;
-            max-height: 90vh;
-            overflow-y: auto;
-        }
-        
-        .modal h2 {
-            margin-bottom: 1.5rem;
-            font-weight: 600;
-        }
-        
-        .form-group {
-            margin-bottom: 1rem;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-        
-        .form-group input,
-        .form-group select {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid #d1d5db;
-            border-radius: 6px;
-            font-size: 1rem;
-        }
-        
-        .form-group input:focus,
-        .form-group select:focus {
-            outline: none;
-            border-color: #2563eb;
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-        }
-        
-        .modal-buttons {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-        
-        .modal-buttons .btn {
-            flex: 1;
-        }
-        
-        .btn-gray {
-            background: #e5e7eb;
-            color: #374151;
-        }
-        
-        .btn-gray:hover {
-            background: #d1d5db;
-        }
-        
-        /* Dashboard Styles */
-        .dashboard-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 2rem;
-        }
-        
-        .dashboard-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-        
-        .tool-card {
-            border: 1px solid #e5e7eb;
-            border-radius: 8px;
-            padding: 1.5rem;
-            background: white;
-            transition: box-shadow 0.3s ease;
-        }
-        
-        .tool-card:hover {
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-        
-        .tool-card h4 {
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-        
-        .tool-card p {
-            color: #6b7280;
-            margin-bottom: 1rem;
-            font-size: 0.875rem;
-        }
-        
-        .btn-small {
-            padding: 0.5rem 1rem;
-            font-size: 0.875rem;
-        }
-        
         /* Responsive Design */
-        @media (max-width: 768px) {
+        @media screen and (max-width: 768px) {
             .hero h1 {
-                font-size: 2rem;
+                font-size: 28px;
+                line-height: 1.3;
             }
             
             .hero p {
-                font-size: 1rem;
+                font-size: 16px;
+                line-height: 1.5;
             }
             
             .hero-buttons {
                 flex-direction: column;
-                align-items: center;
+                align-items: stretch;
+                gap: 16px;
+                max-width: 300px;
+                margin: 0 auto;
+            }
+            
+            .hero-buttons .btn {
+                width: 100%;
+                padding: 18px 24px;
+                font-size: 18px;
+                font-weight: 700;
+                min-height: 56px;
             }
             
             .category-grid {
                 grid-template-columns: 1fr;
-            }
-            
-            .pricing-grid {
-                grid-template-columns: 1fr;
+                gap: 24px;
             }
             
             .features-grid {
                 grid-template-columns: 1fr;
+                gap: 32px;
             }
             
             .footer-grid {
                 grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            
+            .header {
+                top: 70px;
+            }
+            
+            .header-buttons {
+                flex-direction: row;
+                gap: 8px;
+            }
+            
+            .header-buttons .btn {
+                padding: 12px 20px;
+                font-size: 14px;
+                min-height: 44px;
+            }
+            
+            .section-title {
+                font-size: 32px;
+                line-height: 1.2;
+            }
+            
+            .tool-btn {
+                padding: 14px 16px;
+                font-size: 15px;
+            }
+        }
+        
+        @media screen and (max-width: 480px) {
+            .container {
+                padding: 0 16px;
+            }
+            
+            .hero {
+                padding: 40px 0;
+            }
+            
+            .hero h1 {
+                font-size: 24px;
+            }
+            
+            .hero p {
+                font-size: 15px;
+            }
+            
+            .hero-buttons .btn {
+                padding: 20px 24px;
+                font-size: 17px;
+                min-height: 60px;
+            }
+            
+            .section-title {
+                font-size: 28px;
+            }
+            
+            .category-card {
+                padding: 20px;
+            }
+            
+            .testing-banner {
+                padding: 12px 0;
+            }
+            
+            .testing-banner h3 {
+                font-size: 16px;
+            }
+            
+            .testing-banner p {
+                font-size: 14px;
+            }
+            
+            .logo {
+                font-size: 18px;
+            }
+            
+            .header-buttons .btn {
+                padding: 10px 16px;
+                font-size: 13px;
+                min-height: 40px;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Testing Banner -->
+    <div class="testing-banner">
+        <div class="container">
+            <h3>🎉 ALL TOOLS OPEN FOR TESTING 🎉</h3>
+            <p>Click any tool below to access it directly. No registration required during testing period.</p>
+        </div>
+    </div>
+
     <!-- Header -->
     <header class="header">
         <div class="container">
             <div class="header-content">
                 <div class="logo">Dr Kembhavi's AI Tools</div>
-                <div class="header-buttons" id="headerButtons">
-                    <button onclick="showLogin()" class="btn btn-secondary">Login</button>
-                    <button onclick="showRegister()" class="btn btn-primary">Get Started</button>
+                <div class="header-buttons">
+                    <a href="#categories" class="btn btn-secondary">Browse Tools</a>
+                    <a href="#features" class="btn btn-primary">Learn More</a>
                 </div>
             </div>
         </div>
@@ -535,141 +491,134 @@
     <section class="hero">
         <div class="container">
             <h1>Administrative, Academic & Clinical AI Tools</h1>
-            <p>Comprehensive AI-powered tools for Ayurveda education, research, and clinical practice. Designed specifically for BAMS students, Faculty, PG Scholars, and Healthcare administrators.</p>
+            <p>Comprehensive AI-powered tools for Ayurveda education, research, and clinical practice. All tools are FREE during testing period.</p>
             <div class="hero-buttons">
-                <button onclick="showRegister()" class="btn btn-white">Start Free Trial</button>
-                <button onclick="scrollToPricing()" class="btn btn-outline">View Pricing</button>
+                <a href="#categories" class="btn btn-white">Browse All Tools</a>
+                <a href="#features" class="btn btn-outline">Learn More</a>
             </div>
         </div>
     </section>
 
     <!-- Categories Section -->
-    <section class="categories">
+    <section class="categories" id="categories">
         <div class="container">
             <h2 class="section-title">AI Tools for Ayurveda Education & Practice</h2>
+            <div style="text-align: center; margin-bottom: 3rem; padding: 1.5rem; background: linear-gradient(135deg, #10b981, #059669); border-radius: 12px; color: white;">
+                <h3 style="margin-bottom: 1rem; font-size: 1.5rem;">🚀 ALL 44+ TOOLS COMPLETELY FREE!</h3>
+                <p style="margin: 0; font-size: 1.1rem;">Click any tool below to access it directly. No registration or payment required during testing.</p>
+            </div>
+            
             <div class="category-grid">
+                <div class="category-card">
+                    <div class="category-badge">Free Access Tools</div>
+                    <h3>Essential Tools (Always Free)</h3>
+                    <p>Core tools available to everyone without any restrictions.</p>
+                    <div style="margin-top: 1.5rem;">
+                        <a href="https://drkembhavi.github.io/sample-size-calc/" target="_blank" class="tool-btn">Sample Size Calculator</a>
+                        <a href="https://drkembhavi.github.io/ayurevda-study-design-tool/" target="_blank" class="tool-btn">Ayurveda Study Design Tool</a>
+                        <a href="https://drkembhavi-s.github.io/DRKEMBHAVIS-AI-MEDICAL-RESEARCH-GENERATOR-TOOL/" target="_blank" class="tool-btn">Medical Research Reference Generator</a>
+                        <a href="https://drkembhavi-s.github.io/QR-CODE-GENERATOR/" target="_blank" class="tool-btn">QR Code Generator</a>
+                        <a href="https://drkembhavi-s.github.io/DRKEMBHAVIS-DISEASE-INVESTIGATIONS-GENERATOR-TOOL/" target="_blank" class="tool-btn">Disease Investigations Generator</a>
+                    </div>
+                </div>
+                
                 <div class="category-card">
                     <div class="category-badge">College & Academic</div>
                     <h3>Administrative Tools</h3>
                     <p>Comprehensive tools for college administration, staff management, and academic operations.</p>
-                    <ul>
-                        <li>Lab Management System</li>
-                        <li>Staff & Student Attendance</li>
-                        <li>Library Usage Tracking</li>
-                        <li>Fee & Stock Management</li>
-                        <li>NCISM Inspection Tools</li>
-                    </ul>
+                    <div style="margin-top: 1.5rem;">
+                        <a href="https://drkembhavi-s.github.io/LABORATORY-MANAGEMENT-TOOL/" target="_blank" class="tool-btn">Lab Management Tool</a>
+                        <a href="https://drkembhavi-s.github.io/AYU-COLLEGE-LIBRARYUSAGE-TRACKING-TOOL/" target="_blank" class="tool-btn">Library Usage Tracking</a>
+                        <a href="https://drkembhavi-s.github.io/AYU-COLLEGE-STAFF-ATTENDANCE-TRACKING-TOOL/" target="_blank" class="tool-btn">Staff Attendance Management</a>
+                        <a href="https://drkembhavi-s.github.io/AYU-COLLEGE-STUDENT-ATTENDANCE-TRACKING-TOOL/" target="_blank" class="tool-btn">Student Attendance Tracking</a>
+                        <a href="https://drkembhavi-s.github.io/JAGMAMCH-FEE-TRACKING-TOOL/" target="_blank" class="tool-btn">Fee Tracking Tool</a>
+                        <a href="https://drkembhavi-s.github.io/JAGMAMCH-STOCK-REGISTER-TOOL/" target="_blank" class="tool-btn">Stock Register Tool</a>
+                        <a href="https://drkembhavi-s.github.io/NCISM-INSPECTION-DOCUMENTS-TOOL/" target="_blank" class="tool-btn">NCISM Inspection Documents</a>
+                        <a href="https://drkembhavi-s.github.io/JAGMAMCH-ACADEMICCOUNCIL-ANNUALREPORT-TOOL/" target="_blank" class="tool-btn">Academic Council Annual Report</a>
+                        <a href="https://drkembhavi-s.github.io/JAGMAMCH-PHARMACY-INDENT-SUPPLY-TOOL/" target="_blank" class="tool-btn">Pharmacy Indent Supply Tool</a>
+                    </div>
                 </div>
                 
                 <div class="category-card">
                     <div class="category-badge">Faculty</div>
                     <h3>Faculty Tools</h3>
                     <p>Specialized tools for Ayurveda faculty to enhance teaching, assessment, and curriculum planning.</p>
-                    <ul>
-                        <li>Teacher Self-Assessment</li>
-                        <li>BAMS PA Term Test Marking</li>
-                        <li>Hospital Statistics</li>
-                        <li>Curriculum Planner</li>
-                        <li>Pharmacy Inventory</li>
-                    </ul>
+                    <div style="margin-top: 1.5rem;">
+                        <a href="https://drkembhavi-s.github.io/AYU-TEACHER-SELF-ASSESSMENT-TOOL/" target="_blank" class="tool-btn">Teacher Self-Assessment Tool</a>
+                        <a href="https://drkembhavi-s.github.io/NCISM-BAMS-PA-TERMTEST-MARKING-TOOL/" target="_blank" class="tool-btn">NCISM BAMS PA Term Test Marking</a>
+                        <a href="https://drkembhavi-s.github.io/AYU-HOSPITAL-STATISTICS-TOOL/" target="_blank" class="tool-btn">Hospital Statistics Tool</a>
+                        <a href="https://drkembhavi-s.github.io/AYU-HOSPITAL-PHARMACY-INVENTORY-TOOL/" target="_blank" class="tool-btn">Hospital Pharmacy Inventory</a>
+                        <a href="https://drkembhavi-s.github.io/DRKEMBHAVIS-BAMS-FACULTY-NCISM-CURRICULUM-PLANNER/" target="_blank" class="tool-btn">BAMS Faculty Curriculum Planner</a>
+                    </div>
                 </div>
                 
                 <div class="category-card">
                     <div class="category-badge">BAMS Students</div>
                     <h3>Student Learning Tools</h3>
                     <p>Essential tools for BAMS students to assess skills, generate notes, and enhance learning.</p>
-                    <ul>
-                        <li>Skill Assessment Tools</li>
-                        <li>Essential Skill Framework</li>
-                        <li>Disease Assessment Guidelines</li>
-                        <li>Exam Notes Generator</li>
-                        <li>Study Support Tools</li>
-                    </ul>
+                    <div style="margin-top: 1.5rem;">
+                        <a href="https://drkembhavi.github.io/bams-skill-assessment-tool/" target="_blank" class="tool-btn">BAMS Skill Assessment Tool</a>
+                        <a href="https://drkembhavi-s.github.io/AYURVEDA-STUDENT-ESSENTIAL-SKILL-ASSESSMENT-TOOL/" target="_blank" class="tool-btn">Ayurveda Student Essential Skills</a>
+                        <a href="https://drkembhavi-s.github.io/STUDENT-ESSENTIAL-SKILL-FRAMEWORK-BLUEPRINT-TOOL/" target="_blank" class="tool-btn">Essential Skill Framework Blueprint</a>
+                        <a href="https://drkembhavi-s.github.io/DRKEMBHAVIS-DISEASE-ASSESSMENT-GUIDELINES-GENERATOR-TOOL/" target="_blank" class="tool-btn">Disease Assessment Guidelines</a>
+                        <a href="https://drkembhavi-s.github.io/DRKEMBHAVIS-EXAM-REVISIONNOTES-GENERATOR-TOOL/" target="_blank" class="tool-btn">Exam Notes Generator</a>
+                        <a href="https://drkembhavi-s.github.io/DRKEMBHAVIS-PHARMACOLOGY-NOTES-GENERATOR-TOOL/" target="_blank" class="tool-btn">Pharmacology Notes Generator</a>
+                    </div>
                 </div>
                 
                 <div class="category-card">
                     <div class="category-badge">PG Scholars</div>
                     <h3>Research & PG Tools</h3>
                     <p>Advanced tools for postgraduate research, dissertation work, and specialized assessments.</p>
-                    <ul>
-                        <li>Research Methodology MCQ</li>
-                        <li>Biostatistics Assessment</li>
-                        <li>Sample Size Calculator</li>
-                        <li>Dissertation Tool</li>
-                        <li>Statistical Test Generator</li>
-                    </ul>
+                    <div style="margin-top: 1.5rem;">
+                        <a href="https://drkembhavi.github.io/ayu-pg-resmeth-mcq-assessment-tool/" target="_blank" class="tool-btn">PG Research Methodology MCQ</a>
+                        <a href="https://drkembhavi.github.io/ayu-pg-biostat-assessment-tool/" target="_blank" class="tool-btn">PG Biostatistics Assessment</a>
+                        <a href="https://drkembhavi-s.github.io/research-scholar-assessment/" target="_blank" class="tool-btn">Research Scholar Assessment</a>
+                        <a href="https://drkembhavi-s.github.io/DRKEMBHAVIS-DISSERTATION-TOOL/" target="_blank" class="tool-btn">Dissertation Tool</a>
+                        <a href="https://drkembhavi-s.github.io/STATISTICAL-TEST-GENERATOR-TOOL/" target="_blank" class="tool-btn">Statistical Test Generator</a>
+                    </div>
                 </div>
                 
                 <div class="category-card">
                     <div class="category-badge">Clinical Tools</div>
                     <h3>Clinical Practice</h3>
                     <p>AI-powered clinical tools for diagnosis, treatment planning, and patient management.</p>
-                    <ul>
-                        <li>Clinical Reasoning Tool</li>
-                        <li>Disease Investigation Generator</li>
-                        <li>Prescription Generator</li>
-                        <li>Ayurvedic Formulation Analysis</li>
-                        <li>BMI & Calorie Calculator</li>
-                    </ul>
+                    <div style="margin-top: 1.5rem;">
+                        <a href="https://drkembhavi-s.github.io/AYUR-CLINICAL-REASONING-TOOL/" target="_blank" class="tool-btn">Ayur Clinical Reasoning Tool</a>
+                        <a href="https://drkembhavi-s.github.io/DRKEMBHAVIS-DG-ASSESSMENT-TOOL/" target="_blank" class="tool-btn">Dravyaguna Assessment Tool</a>
+                        <a href="https://drkembhavi-s.github.io/DRKEMBHAVIS-ROGANIDANA-ASSESSMENT-TOOL/" target="_blank" class="tool-btn">Roga Nidana Assessment</a>
+                        <a href="https://drkembhavi-s.github.io/DRKEMBHAVIS-RSBK-ASSESSMENT-TOOL/" target="_blank" class="tool-btn">RSBK Assessment Tool</a>
+                        <a href="https://drkembhavi-s.github.io/DRKEMBHAVIS-CLINICAL-CASE-GENERATOR-TOOL/" target="_blank" class="tool-btn">Clinical Case Generator</a>
+                        <a href="https://drkembhavi-s.github.io/DRKEMBHAVIS-GUNA-KARMA-ASSESSMENT-TOOL/" target="_blank" class="tool-btn">Guna Karma Assessment</a>
+                        <a href="https://drkembhavi-s.github.io/DRKEMBHAVIS-AYU-PG-SHALYA-ASSESSMENT-GENERATOR-TOOL/" target="_blank" class="tool-btn">PG Shalya Assessment Generator</a>
+                        <a href="https://drkembhavi-s.github.io/DRKEMBHAVIS-AYU-PG-KC-ASSESSMENT-GENERATOR-TOOL/" target="_blank" class="tool-btn">PG Kaumarabhritya Assessment</a>
+                        <a href="https://drkembhavi-s.github.io/DRKEMBHAVIS-AYURVEDA-FORMULATION-ANALYSIS-TOOL/" target="_blank" class="tool-btn">Ayurvedic Formulations Analysis</a>
+                        <a href="https://drkembhavi-s.github.io/DRKEMBHAVIS-BMI-CALORIE-TOOL/" target="_blank" class="tool-btn">BMI & Calorie Tool</a>
+                        <a href="https://drkembhavi-s.github.io/DRKEMBHAVIS-PRECRIPTION-LFESTYLEADVICE-GENERATOR-TOOL/" target="_blank" class="tool-btn">Prescription Generator</a>
+                        <a href="https://drkembhavi-s.github.io/DRKEMBHAVIS-COMPREHENSIVE-SELF-ASSESSMENT-TOOL/" target="_blank" class="tool-btn">Comprehensive Self Assessment</a>
+                        <a href="https://drkembhavi-s.github.io/DRKEMBHAVIS-AYU-DISEASE-PREDICTION-TOOL/" target="_blank" class="tool-btn">Ayur Disease Predictive Tool</a>
+                    </div>
                 </div>
                 
                 <div class="category-card">
                     <div class="category-badge">Special Tools</div>
                     <h3>Specialized Features</h3>
                     <p>Unique tools for finishing school programs, self-assessment, and cultural elements.</p>
-                    <ul>
-                        <li>Finishing School Tools</li>
-                        <li>Global Self Assessment</li>
-                        <li>Sanskrit Mantra Generator</li>
-                        <li>Ayur Poetry Tool</li>
-                        <li>Clinical Decision Making</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Pricing Section -->
-    <section class="pricing" id="pricing">
-        <div class="container">
-            <h2 class="section-title">Simple, Transparent Pricing</h2>
-            <div class="pricing-grid">
-                <!-- Free Plan -->
-                <div class="pricing-card">
-                    <h3>Free Access</h3>
-                    <div class="price">₹0</div>
-                    <ul class="pricing-features">
-                        <li><span class="check">✓</span>5 Essential Tools</li>
-                        <li><span class="check">✓</span>Sample Size Calculator</li>
-                        <li><span class="check">✓</span>Study Design Tool</li>
-                        <li><span class="check">✓</span>QR Code Generator</li>
-                        <li><span class="cross">✗</span>Category-Specific Tools</li>
-                        <li><span class="cross">✗</span>Clinical & Special Tools</li>
-                    </ul>
-                    <button onclick="registerUser('free')" class="btn btn-gray" style="width: 100%;">Get Free Access</button>
-                </div>
-                
-                <!-- Premium Plan -->
-                <div class="pricing-card featured">
-                    <div class="popular-badge">Most Popular</div>
-                    <h3>Premium Access</h3>
-                    <div class="price">₹499 <span class="price-suffix">/ lifetime</span></div>
-                    <ul class="pricing-features">
-                        <li><span class="check">✓</span>All 44+ AI Tools</li>
-                        <li><span class="check">✓</span>Administrative Tools</li>
-                        <li><span class="check">✓</span>Clinical Practice Tools</li>
-                        <li><span class="check">✓</span>Research & Assessment</li>
-                        <li><span class="check">✓</span>Special Features</li>
-                        <li><span class="check">✓</span>Lifetime Updates</li>
-                    </ul>
-                    <button onclick="registerUser('premium')" class="btn btn-primary" style="width: 100%;">Get Premium Access</button>
+                    <div style="margin-top: 1.5rem;">
+                        <a href="https://drkembhavi-s.github.io/DRKEMBHAVIS-AYURVEDA-FINISHING-SCHOOL-TOOL/" target="_blank" class="tool-btn">Ayurveda Finishing School Tool</a>
+                        <a href="https://drkembhavi-s.github.io/DRKEMBHAVIS-GLOBAL-SELF-ASSESSMENT-TOOL/" target="_blank" class="tool-btn">Global Self Assessment</a>
+                        <a href="https://drkembhavi-s.github.io/DRKEMBHAVIS-AYUR-FINISHING-SCHOOL-TOOL/" target="_blank" class="tool-btn">Ayur Finishing School 2.0</a>
+                        <a href="https://drkembhavi-s.github.io/DRKEMBHAVIS-AYUR-POETRY-TOOL/" target="_blank" class="tool-btn">Ayur Poetry Tool</a>
+                        <a href="https://drkembhavi-s.github.io/DRKEMBHAVIS-SANSKRIT-MANTRA-GENERATOR-TOOL/" target="_blank" class="tool-btn">Sanskrit Mantra Generator</a>
+                        <a href="https://drkembhavi-s.github.io/DRKEMBHAVIS-CLINICALREASONING-DECISIONMAKING-SKILLS-ASSESSMENT-TOOL/" target="_blank" class="tool-btn">Clinical Reasoning Decision Making</a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Features Section -->
-    <section class="features">
+    <section class="features" id="features">
         <div class="container">
             <h2 class="section-title">Why Choose Dr Kembhavi's AI Tools?</h2>
             <div class="features-grid">
@@ -713,12 +662,12 @@
                 <div>
                     <h3>Tool Categories</h3>
                     <ul>
-                        <li><a href="#">College Admin Tools</a></li>
-                        <li><a href="#">Faculty Tools</a></li>
-                        <li><a href="#">BAMS Student Tools</a></li>
-                        <li><a href="#">PG Scholar Tools</a></li>
-                        <li><a href="#">Clinical Tools</a></li>
-                        <li><a href="#">Special Tools</a></li>
+                        <li><a href="#categories">College Admin Tools</a></li>
+                        <li><a href="#categories">Faculty Tools</a></li>
+                        <li><a href="#categories">BAMS Student Tools</a></li>
+                        <li><a href="#categories">PG Scholar Tools</a></li>
+                        <li><a href="#categories">Clinical Tools</a></li>
+                        <li><a href="#categories">Special Tools</a></li>
                     </ul>
                 </div>
                 <div>
@@ -735,378 +684,5 @@
             </div>
         </div>
     </footer>
-
-    <!-- Registration Modal -->
-    <div id="registerModal" class="modal">
-        <div class="modal-content">
-            <h2>Register for Access</h2>
-            <form id="registerForm">
-                <div class="form-group">
-                    <label>Name</label>
-                    <input type="text" id="userName" required>
-                </div>
-                <div class="form-group">
-                    <label>Email</label>
-                    <input type="email" id="userEmail" required>
-                </div>
-                <div class="form-group">
-                    <label>Category</label>
-                    <select id="userCategory" required>
-                        <option value="">Select your category</option>
-                        <option value="college">College & Academic Administration</option>
-                        <option value="faculty">Faculty</option>
-                        <option value="bams">BAMS Students</option>
-                        <option value="pg">PG Scholars</option>
-                        <option value="clinical">Clinical Practice</option>
-                        <option value="special">Special Tools Access</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Institution</label>
-                    <input type="text" id="userInstitution" required>
-                </div>
-                <div class="form-group">
-                    <label>Password</label>
-                    <input type="password" id="userPassword" required>
-                </div>
-                <div class="modal-buttons">
-                    <button type="button" onclick="closeModal('registerModal')" class="btn btn-gray">Cancel</button>
-                    <button type="submit" class="btn btn-primary">Register</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <!-- Login Modal -->
-    <div id="loginModal" class="modal">
-        <div class="modal-content">
-            <h2>Login to Your Account</h2>
-            <form id="loginForm">
-                <div class="form-group">
-                    <label>Email</label>
-                    <input type="email" id="loginEmail" required>
-                </div>
-                <div class="form-group">
-                    <label>Password</label>
-                    <input type="password" id="loginPassword" required>
-                </div>
-                <div class="modal-buttons">
-                    <button type="button" onclick="closeModal('loginModal')" class="btn btn-gray">Cancel</button>
-                    <button type="submit" class="btn btn-primary">Login</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <!-- Dashboard Modal -->
-    <div id="dashboardModal" class="modal">
-        <div class="modal-content" style="max-width: 900px;">
-            <div class="dashboard-header">
-                <h2>Your AI Tools Dashboard</h2>
-                <button onclick="logout()" class="btn" style="background: #ef4444; color: white;">Logout</button>
-            </div>
-            <div id="dashboardContent">
-                <!-- Dashboard content will be populated by JavaScript -->
-            </div>
-            <button onclick="closeModal('dashboardModal')" class="btn btn-gray" style="margin-top: 1.5rem;">Close</button>
-        </div>
-    </div>
-
-    <script>
-        let currentUser = null;
-        let planType = null;
-
-        // Modal functions
-        function showRegister() {
-            document.getElementById('registerModal').classList.add('show');
-        }
-
-        function showLogin() {
-            document.getElementById('loginModal').classList.add('show');
-        }
-
-        function closeModal(modalId) {
-            document.getElementById(modalId).classList.remove('show');
-        }
-
-        function registerUser(plan) {
-            planType = plan;
-            showRegister();
-        }
-
-        function scrollToPricing() {
-            document.getElementById('pricing').scrollIntoView({behavior: 'smooth'});
-        }
-
-        // Registration form handler
-        document.getElementById('registerForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            const userData = {
-                name: document.getElementById('userName').value,
-                email: document.getElementById('userEmail').value,
-                category: document.getElementById('userCategory').value,
-                institution: document.getElementById('userInstitution').value,
-                password: document.getElementById('userPassword').value,
-                plan: planType || 'free'
-            };
-
-            try {
-                if (userData.plan === 'premium') {
-                    await processPayment(userData);
-                } else {
-                    // Free registration
-                    localStorage.setItem('userData', JSON.stringify(userData));
-                    currentUser = userData;
-                    closeModal('registerModal');
-                    showDashboard();
-                    alert('🎉 Registration successful! Welcome to your free AI tools.');
-                }
-            } catch (error) {
-                alert('Registration failed: ' + error.message);
-            }
-        });
-
-        // Login form handler
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const email = document.getElementById('loginEmail').value;
-            const password = document.getElementById('loginPassword').value;
-            
-            const storedUser = localStorage.getItem('userData');
-            if (storedUser) {
-                const userData = JSON.parse(storedUser);
-                if (userData.email === email && userData.password === password) {
-                    currentUser = userData;
-                    closeModal('loginModal');
-                    showDashboard();
-                } else {
-                    alert('Invalid credentials');
-                }
-            } else {
-                alert('User not found. Please register first.');
-            }
-        });
-
-        // Payment processing (Demo version)
-        async function processPayment(userData) {
-            const proceedWithPayment = confirm(
-                `🔥 PREMIUM ACCESS CHECKOUT 🔥\n\n` +
-                `Plan: Premium Lifetime Access\n` +
-                `Amount: ₹499\n` +
-                `Tools: All 44+ AI Tools + Premium features\n\n` +
-                `Click OK to simulate payment success\n` +
-                `(In production, this will process real payment)`
-            );
-            
-            if (proceedWithPayment) {
-                const paymentButton = document.querySelector('#registerForm button[type="submit"]');
-                paymentButton.textContent = 'Processing Payment...';
-                paymentButton.disabled = true;
-                
-                // Simulate payment processing delay
-                await new Promise(resolve => setTimeout(resolve, 2000));
-                
-                userData.paid = true;
-                userData.paymentId = 'demo_' + Date.now();
-                userData.paymentDate = new Date().toISOString();
-                currentUser = userData;
-                
-                localStorage.setItem('userData', JSON.stringify(userData));
-                closeModal('registerModal');
-                showDashboard();
-                
-                alert('🎉 Payment Successful!\n\nWelcome to Premium Access!\nYou now have lifetime access to all 44+ AI tools.');
-                
-                paymentButton.textContent = 'Register';
-                paymentButton.disabled = false;
-            } else {
-                throw new Error('Payment cancelled by user');
-            }
-        }
-
-        // Dashboard display
-        function showDashboard() {
-            const tools = getToolsForUser(currentUser);
-            const dashboardContent = document.getElementById('dashboardContent');
-            
-            dashboardContent.innerHTML = `
-                <div style="margin-bottom: 2rem;">
-                    <h3 style="margin-bottom: 0.5rem;">Welcome, ${currentUser.name}!</h3>
-                    <p style="color: #6b7280;">Category: ${getCategoryName(currentUser.category)} | Plan: ${currentUser.plan === 'premium' || currentUser.paid ? 'Premium' : 'Free'} | Tools Available: ${tools.length}</p>
-                </div>
-                
-                <div class="dashboard-grid">
-                    ${tools.map(tool => `
-                        <div class="tool-card">
-                            <h4>${tool.name}</h4>
-                            <p>${tool.description}</p>
-                            <a href="${tool.url}" target="_blank" class="btn btn-primary btn-small">
-                                Access Tool
-                            </a>
-                        </div>
-                    `).join('')}
-                </div>
-            `;
-            
-            document.getElementById('dashboardModal').classList.add('show');
-            updateHeader();
-        }
-
-        // Get tools based on user category and plan
-        function getToolsForUser(user) {
-            // Free access tools available to everyone
-            const freeTools = [
-                { name: "Sample Size Calculator", description: "Calculate optimal sample sizes for research", url: "https://drkembhavi.github.io/sample-size-calc/" },
-                { name: "Ayurveda Study Design Tool", description: "Design robust Ayurveda research studies", url: "https://drkembhavi.github.io/ayurevda-study-design-tool/" },
-                { name: "Medical Research Reference Generator", description: "Generate medical research references", url: "https://drkembhavi-s.github.io/DRKEMBHAVIS-AI-MEDICAL-RESEARCH-GENERATOR-TOOL/" },
-                { name: "QR Code Generator", description: "Generate QR codes for various purposes", url: "https://drkembhavi-s.github.io/QR-CODE-GENERATOR/" },
-                { name: "Disease Investigations Generator", description: "Generate investigation protocols for diseases", url: "https://drkembhavi-s.github.io/DRKEMBHAVIS-DISEASE-INVESTIGATIONS-GENERATOR-TOOL/" }
-            ];
-
-            const categoryTools = {
-                college: [
-                    { name: "Lab Management Tool", description: "Comprehensive laboratory management system", url: "https://drkembhavi-s.github.io/LABORATORY-MANAGEMENT-TOOL/" },
-                    { name: "Library Usage Tracking", description: "Track and manage library usage statistics", url: "https://drkembhavi-s.github.io/AYU-COLLEGE-LIBRARYUSAGE-TRACKING-TOOL/" },
-                    { name: "Staff Attendance Management", description: "Complete staff attendance tracking system", url: "https://drkembhavi-s.github.io/AYU-COLLEGE-STAFF-ATTENDANCE-TRACKING-TOOL/" },
-                    { name: "Student Attendance Tracking", description: "Efficient student attendance management", url: "https://drkembhavi-s.github.io/AYU-COLLEGE-STUDENT-ATTENDANCE-TRACKING-TOOL/" },
-                    { name: "Fee Tracking Tool", description: "Comprehensive fee management system", url: "https://drkembhavi-s.github.io/JAGMAMCH-FEE-TRACKING-TOOL/" },
-                    { name: "Stock Register Tool", description: "Inventory and stock management", url: "https://drkembhavi-s.github.io/JAGMAMCH-STOCK-REGISTER-TOOL/" },
-                    { name: "NCISM Inspection Documents", description: "NCISM inspection documentation tool", url: "https://drkembhavi-s.github.io/NCISM-INSPECTION-DOCUMENTS-TOOL/" },
-                    { name: "Academic Council Annual Report", description: "Generate comprehensive annual reports", url: "https://drkembhavi-s.github.io/JAGMAMCH-ACADEMICCOUNCIL-ANNUALREPORT-TOOL/" },
-                    { name: "Pharmacy Indent Supply Tool", description: "Pharmacy supply and indent management", url: "https://drkembhavi-s.github.io/JAGMAMCH-PHARMACY-INDENT-SUPPLY-TOOL/" }
-                ],
-                faculty: [
-                    { name: "Teacher Self-Assessment Tool", description: "Comprehensive faculty self-assessment", url: "https://drkembhavi-s.github.io/AYU-TEACHER-SELF-ASSESSMENT-TOOL/" },
-                    { name: "NCISM BAMS PA Term Test Marking", description: "Efficient marking tool for PA term tests", url: "https://drkembhavi-s.github.io/NCISM-BAMS-PA-TERMTEST-MARKING-TOOL/" },
-                    { name: "Hospital Statistics Tool", description: "Comprehensive hospital statistics management", url: "https://drkembhavi-s.github.io/AYU-HOSPITAL-STATISTICS-TOOL/" },
-                    { name: "Hospital Pharmacy Inventory", description: "Hospital pharmacy inventory management", url: "https://drkembhavi-s.github.io/AYU-HOSPITAL-PHARMACY-INVENTORY-TOOL/" },
-                    { name: "BAMS Faculty Curriculum Planner", description: "NCISM curriculum planning tool for faculty", url: "https://drkembhavi-s.github.io/DRKEMBHAVIS-BAMS-FACULTY-NCISM-CURRICULUM-PLANNER/" }
-                ],
-                bams: [
-                    { name: "BAMS Skill Assessment Tool", description: "Assess essential BAMS skills", url: "https://drkembhavi.github.io/bams-skill-assessment-tool/" },
-                    { name: "Ayurveda Student Essential Skills", description: "Essential skill assessment for students", url: "https://drkembhavi-s.github.io/AYURVEDA-STUDENT-ESSENTIAL-SKILL-ASSESSMENT-TOOL/" },
-                    { name: "Essential Skill Framework Blueprint", description: "Skill framework blueprint tool", url: "https://drkembhavi-s.github.io/STUDENT-ESSENTIAL-SKILL-FRAMEWORK-BLUEPRINT-TOOL/" },
-                    { name: "Disease Assessment Guidelines", description: "Generate disease assessment guidelines", url: "https://drkembhavi-s.github.io/DRKEMBHAVIS-DISEASE-ASSESSMENT-GUIDELINES-GENERATOR-TOOL/" },
-                    { name: "Exam Notes Generator", description: "Generate comprehensive exam revision notes", url: "https://drkembhavi-s.github.io/DRKEMBHAVIS-EXAM-REVISIONNOTES-GENERATOR-TOOL/" },
-                    { name: "Pharmacology Notes Generator", description: "Generate pharmacology study notes", url: "https://drkembhavi-s.github.io/DRKEMBHAVIS-PHARMACOLOGY-NOTES-GENERATOR-TOOL/" }
-                ],
-                pg: [
-                    { name: "PG Research Methodology MCQ", description: "Research methodology assessment for PG", url: "https://drkembhavi.github.io/ayu-pg-resmeth-mcq-assessment-tool/" },
-                    { name: "PG Biostatistics Assessment", description: "Biostatistics assessment tool for PG", url: "https://drkembhavi.github.io/ayu-pg-biostat-assessment-tool/" },
-                    { name: "Research Scholar Assessment", description: "Comprehensive research scholar evaluation", url: "https://drkembhavi-s.github.io/research-scholar-assessment/" },
-                    { name: "Dissertation Tool", description: "Complete dissertation management tool", url: "https://drkembhavi-s.github.io/DRKEMBHAVIS-DISSERTATION-TOOL/" },
-                    { name: "Statistical Test Generator", description: "Generate appropriate statistical tests", url: "https://drkembhavi-s.github.io/STATISTICAL-TEST-GENERATOR-TOOL/" }
-                ],
-                clinical: [
-                    { name: "Ayur Clinical Reasoning Tool", description: "Advanced clinical reasoning for Ayurveda", url: "https://drkembhavi-s.github.io/AYUR-CLINICAL-REASONING-TOOL/" },
-                    { name: "Dravyaguna Assessment Tool", description: "Comprehensive Dravyaguna assessment", url: "https://drkembhavi-s.github.io/DRKEMBHAVIS-DG-ASSESSMENT-TOOL/" },
-                    { name: "Roga Nidana Assessment", description: "Roga Nidana diagnostic assessment", url: "https://drkembhavi-s.github.io/DRKEMBHAVIS-ROGANIDANA-ASSESSMENT-TOOL/" },
-                    { name: "RSBK Assessment Tool", description: "Rasayana Shastra Bhaishajya Kalpana assessment", url: "https://drkembhavi-s.github.io/DRKEMBHAVIS-RSBK-ASSESSMENT-TOOL/" },
-                    { name: "Clinical Case Generator", description: "Generate clinical cases for training", url: "https://drkembhavi-s.github.io/DRKEMBHAVIS-CLINICAL-CASE-GENERATOR-TOOL/" },
-                    { name: "Guna Karma Assessment", description: "Assess Guna Karma knowledge", url: "https://drkembhavi-s.github.io/DRKEMBHAVIS-GUNA-KARMA-ASSESSMENT-TOOL/" },
-                    { name: "PG Shalya Assessment Generator", description: "Shalya assessment for PG students", url: "https://drkembhavi-s.github.io/DRKEMBHAVIS-AYU-PG-SHALYA-ASSESSMENT-GENERATOR-TOOL/" },
-                    { name: "PG Kaumarabhritya Assessment", description: "KC assessment generator for PG", url: "https://drkembhavi-s.github.io/DRKEMBHAVIS-AYU-PG-KC-ASSESSMENT-GENERATOR-TOOL/" },
-                    { name: "Ayurvedic Formulations Analysis", description: "Analyze Ayurvedic formulations", url: "https://drkembhavi-s.github.io/DRKEMBHAVIS-AYURVEDA-FORMULATION-ANALYSIS-TOOL/" },
-                    { name: "BMI & Calorie Tool", description: "BMI and calorie calculation tool", url: "https://drkembhavi-s.github.io/DRKEMBHAVIS-BMI-CALORIE-TOOL/" },
-                    { name: "Prescription Generator", description: "Generate Ayurvedic prescriptions", url: "https://drkembhavi-s.github.io/DRKEMBHAVIS-PRECRIPTION-LFESTYLEADVICE-GENERATOR-TOOL/" },
-                    { name: "Comprehensive Self Assessment", description: "Complete self-assessment tool", url: "https://drkembhavi-s.github.io/DRKEMBHAVIS-COMPREHENSIVE-SELF-ASSESSMENT-TOOL/" },
-                    { name: "Ayur Disease Predictive Tool", description: "AI-powered disease prediction", url: "https://drkembhavi-s.github.io/DRKEMBHAVIS-AYU-DISEASE-PREDICTION-TOOL/" }
-                ],
-                special: [
-                    { name: "Ayurveda Finishing School Tool", description: "Comprehensive finishing school program", url: "https://drkembhavi-s.github.io/DRKEMBHAVIS-AYURVEDA-FINISHING-SCHOOL-TOOL/" },
-                    { name: "Global Self Assessment", description: "Global assessment framework", url: "https://drkembhavi-s.github.io/DRKEMBHAVIS-GLOBAL-SELF-ASSESSMENT-TOOL/" },
-                    { name: "Ayur Finishing School 2.0", description: "Advanced finishing school program", url: "https://drkembhavi-s.github.io/DRKEMBHAVIS-AYUR-FINISHING-SCHOOL-TOOL/" },
-                    { name: "Ayur Poetry Tool", description: "Generate Ayurvedic poetry", url: "https://drkembhavi-s.github.io/DRKEMBHAVIS-AYUR-POETRY-TOOL/" },
-                    { name: "Sanskrit Mantra Generator", description: "Generate Sanskrit mantras", url: "https://drkembhavi-s.github.io/DRKEMBHAVIS-SANSKRIT-MANTRA-GENERATOR-TOOL/" },
-                    { name: "Clinical Reasoning Decision Making", description: "Advanced clinical decision-making skills", url: "https://drkembhavi-s.github.io/DRKEMBHAVIS-CLINICALREASONING-DECISIONMAKING-SKILLS-ASSESSMENT-TOOL/" }
-                ]
-            };
-
-            let tools = [...freeTools]; // Everyone gets free tools
-            
-            // Add category-specific tools for all users during testing
-            if (TESTING_MODE) {
-                // In testing mode, everyone gets access to all tools
-                Object.values(categoryTools).forEach(categoryToolList => {
-                    categoryToolList.forEach(tool => {
-                        if (!tools.find(t => t.url === tool.url)) {
-                            tools.push(tool);
-                        }
-                    });
-                });
-            } else {
-                // Normal mode - category-specific access
-                if (user.plan === 'free' && categoryTools[user.category]) {
-                    tools = [...tools, ...categoryTools[user.category]];
-                }
-                
-                // Premium users get access to all tools from all categories
-                if (user.plan === 'premium' || user.paid) {
-                    Object.values(categoryTools).forEach(categoryToolList => {
-                        categoryToolList.forEach(tool => {
-                            if (!tools.find(t => t.url === tool.url)) {
-                                tools.push(tool);
-                            }
-                        });
-                    });
-                }
-            }
-            
-            return tools;
-        }
-
-        function getCategoryName(category) {
-            const names = {
-                college: 'College & Academic Administration',
-                faculty: 'Faculty',
-                bams: 'BAMS Students',
-                pg: 'PG Scholars',
-                clinical: 'Clinical Practice',
-                special: 'Special Tools Access'
-            };
-            return names[category] || category;
-        }
-
-        function updateHeader() {
-            const headerButtons = document.getElementById('headerButtons');
-            if (currentUser) {
-                headerButtons.innerHTML = `
-                    <span style="color: #374151;">Welcome, ${currentUser.name}</span>
-                    <button onclick="showDashboard()" class="btn btn-primary">Dashboard</button>
-                `;
-            } else {
-                headerButtons.innerHTML = `
-                    <button onclick="showLogin()" class="btn btn-secondary">Login</button>
-                    <button onclick="showRegister()" class="btn btn-primary">Get Started</button>
-                `;
-            }
-        }
-
-        function logout() {
-            currentUser = null;
-            localStorage.removeItem('userData');
-            closeModal('dashboardModal');
-            updateHeader();
-            alert('Logged out successfully!');
-        }
-
-        // Check if user is already logged in
-        window.addEventListener('load', function() {
-            const storedUser = localStorage.getItem('userData');
-            if (storedUser) {
-                currentUser = JSON.parse(storedUser);
-                updateHeader();
-            }
-        });
-
-        // Close modal when clicking outside
-        window.addEventListener('click', function(e) {
-            if (e.target.classList.contains('modal')) {
-                e.target.classList.remove('show');
-            }
-        });
-    </script>
 </body>
 </html>
